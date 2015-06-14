@@ -45,10 +45,6 @@
 		A1CE599B1B2DBD7800238CB5 /* JJOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59891B2DBD7800238CB5 /* JJOperation.m */; };
 		A1CE599C1B2DBD7800238CB5 /* JJProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE598C1B2DBD7800238CB5 /* JJProtocol.m */; };
 		A1CE59A01B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59951B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m */; };
-		A1CE59BB1B2DD1ED00238CB5 /* JJTucaoSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59B51B2DD1ED00238CB5 /* JJTucaoSquareModel.m */; };
-		A1CE59BC1B2DD1ED00238CB5 /* JJTucaoSquareOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59B71B2DD1ED00238CB5 /* JJTucaoSquareOperation.m */; };
-		A1CE59BD1B2DD1ED00238CB5 /* JJTucaoSquareProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59B91B2DD1ED00238CB5 /* JJTucaoSquareProtocol.m */; };
-		A1CE59BE1B2DD1ED00238CB5 /* tucaoSquare.archiver in Resources */ = {isa = PBXBuildFile; fileRef = A1CE59BA1B2DD1ED00238CB5 /* tucaoSquare.archiver */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,13 +140,6 @@
 		A1CE59941B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JJNetworkDataModelKit+Test.h"; sourceTree = "<group>"; };
 		A1CE59951B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JJNetworkDataModelKit+Test.m"; sourceTree = "<group>"; };
 		A1CE59A21B2DC2C600238CB5 /* JJNetworkDataModelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJNetworkDataModelKit.h; sourceTree = "<group>"; };
-		A1CE59B41B2DD1ED00238CB5 /* JJTucaoSquareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJTucaoSquareModel.h; sourceTree = "<group>"; };
-		A1CE59B51B2DD1ED00238CB5 /* JJTucaoSquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJTucaoSquareModel.m; sourceTree = "<group>"; };
-		A1CE59B61B2DD1ED00238CB5 /* JJTucaoSquareOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJTucaoSquareOperation.h; sourceTree = "<group>"; };
-		A1CE59B71B2DD1ED00238CB5 /* JJTucaoSquareOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJTucaoSquareOperation.m; sourceTree = "<group>"; };
-		A1CE59B81B2DD1ED00238CB5 /* JJTucaoSquareProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJTucaoSquareProtocol.h; sourceTree = "<group>"; };
-		A1CE59B91B2DD1ED00238CB5 /* JJTucaoSquareProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJTucaoSquareProtocol.m; sourceTree = "<group>"; };
-		A1CE59BA1B2DD1ED00238CB5 /* tucaoSquare.archiver */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = tucaoSquare.archiver; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,13 +428,6 @@
 			children = (
 				A1CE59941B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.h */,
 				A1CE59951B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m */,
-				A1CE59B41B2DD1ED00238CB5 /* JJTucaoSquareModel.h */,
-				A1CE59B51B2DD1ED00238CB5 /* JJTucaoSquareModel.m */,
-				A1CE59B61B2DD1ED00238CB5 /* JJTucaoSquareOperation.h */,
-				A1CE59B71B2DD1ED00238CB5 /* JJTucaoSquareOperation.m */,
-				A1CE59B81B2DD1ED00238CB5 /* JJTucaoSquareProtocol.h */,
-				A1CE59B91B2DD1ED00238CB5 /* JJTucaoSquareProtocol.m */,
-				A1CE59BA1B2DD1ED00238CB5 /* tucaoSquare.archiver */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -533,7 +515,6 @@
 				A11E218F1B2C1F4D001CE732 /* Main.storyboard in Resources */,
 				A11E21941B2C1F4D001CE732 /* LaunchScreen.xib in Resources */,
 				A11E21911B2C1F4D001CE732 /* Images.xcassets in Resources */,
-				A1CE59BE1B2DD1ED00238CB5 /* tucaoSquare.archiver in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,10 +546,8 @@
 				A1CE595F1B2DB90800238CB5 /* MTLModel+NSCoding.m in Sources */,
 				A1CE59A01B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m in Sources */,
 				A1CE596E1B2DB90800238CB5 /* NSDictionary+RequestEncoding.m in Sources */,
-				A1CE59BB1B2DD1ED00238CB5 /* JJTucaoSquareModel.m in Sources */,
 				A1CE599B1B2DBD7800238CB5 /* JJOperation.m in Sources */,
 				A1CE59971B2DBD7800238CB5 /* JJApplicationLayerManager.m in Sources */,
-				A1CE59BD1B2DD1ED00238CB5 /* JJTucaoSquareProtocol.m in Sources */,
 				A11E218C1B2C1F4D001CE732 /* ViewController.m in Sources */,
 				A11E21891B2C1F4D001CE732 /* AppDelegate.m in Sources */,
 				A11E21861B2C1F4D001CE732 /* main.m in Sources */,
@@ -577,7 +556,6 @@
 				A1CE596C1B2DB90800238CB5 /* NSData+MKBase64.m in Sources */,
 				A1CE59671B2DB90800238CB5 /* NSDictionary+MTLMappingAdditions.m in Sources */,
 				A1CE599C1B2DBD7800238CB5 /* JJProtocol.m in Sources */,
-				A1CE59BC1B2DD1ED00238CB5 /* JJTucaoSquareOperation.m in Sources */,
 				A1CE596A1B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				A1CE595C1B2DB90800238CB5 /* EXTRuntimeExtensions.m in Sources */,
 				A1CE59691B2DB90800238CB5 /* NSObject+MTLComparisonAdditions.m in Sources */,
