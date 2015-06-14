@@ -2,7 +2,7 @@
 //  main.m
 //  JJNetworkDataModelKit
 //
-//  Created by gongjian03 on 6/13/15.
+//  Created by JJ on 6/13/15.
 //  Copyright (c) 2015 JJ. All rights reserved.
 //
 

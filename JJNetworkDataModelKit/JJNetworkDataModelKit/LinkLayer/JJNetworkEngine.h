@@ -1,0 +1,22 @@
+//
+//  JJNetworkEngine.h
+//  JJNetworkDataModelKit
+//
+//  Created by JJ on 6/13/15.
+//  Copyright (c) 2015 JJ Inc. All rights reserved.
+//
+
+#import "MKNetworkEngine.h"
+
+#import "JJApplicationLayerManager.h"
+
+@interface JJNetworkEngine : MKNetworkEngine
+
+@property (nonatomic, assign) JJIndexType index;
+@property (nonatomic, copy) NSString *urlString;
+@property (nonatomic, assign) Class protocolClass;
+
+- (void)httpRequest;
+- (void)cancelHttpRequest;
+
+@end

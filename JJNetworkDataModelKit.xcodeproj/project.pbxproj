@@ -14,6 +14,37 @@
 		A11E21911B2C1F4D001CE732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11E21901B2C1F4D001CE732 /* Images.xcassets */; };
 		A11E21941B2C1F4D001CE732 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11E21921B2C1F4D001CE732 /* LaunchScreen.xib */; };
 		A11E21A01B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E219F1B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m */; };
+		A1CE595C1B2DB90800238CB5 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59231B2DB90700238CB5 /* EXTRuntimeExtensions.m */; };
+		A1CE595D1B2DB90800238CB5 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59251B2DB90700238CB5 /* EXTScope.m */; };
+		A1CE595E1B2DB90800238CB5 /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59291B2DB90700238CB5 /* MTLJSONAdapter.m */; };
+		A1CE595F1B2DB90800238CB5 /* MTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE592B1B2DB90700238CB5 /* MTLModel+NSCoding.m */; };
+		A1CE59601B2DB90800238CB5 /* MTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE592D1B2DB90700238CB5 /* MTLModel.m */; };
+		A1CE59611B2DB90800238CB5 /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE592F1B2DB90700238CB5 /* MTLReflection.m */; };
+		A1CE59621B2DB90800238CB5 /* MTLTransformerErrorHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59311B2DB90700238CB5 /* MTLTransformerErrorHandling.m */; };
+		A1CE59631B2DB90800238CB5 /* MTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59331B2DB90700238CB5 /* MTLValueTransformer.m */; };
+		A1CE59641B2DB90800238CB5 /* NSArray+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59351B2DB90700238CB5 /* NSArray+MTLManipulationAdditions.m */; };
+		A1CE59651B2DB90800238CB5 /* NSDictionary+MTLJSONKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59371B2DB90700238CB5 /* NSDictionary+MTLJSONKeyPath.m */; };
+		A1CE59661B2DB90800238CB5 /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59391B2DB90700238CB5 /* NSDictionary+MTLManipulationAdditions.m */; };
+		A1CE59671B2DB90800238CB5 /* NSDictionary+MTLMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE593B1B2DB90700238CB5 /* NSDictionary+MTLMappingAdditions.m */; };
+		A1CE59681B2DB90800238CB5 /* NSError+MTLModelException.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE593D1B2DB90700238CB5 /* NSError+MTLModelException.m */; };
+		A1CE59691B2DB90800238CB5 /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE593F1B2DB90700238CB5 /* NSObject+MTLComparisonAdditions.m */; };
+		A1CE596A1B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59411B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.m */; };
+		A1CE596B1B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59431B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; };
+		A1CE596C1B2DB90800238CB5 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59491B2DB90800238CB5 /* NSData+MKBase64.m */; };
+		A1CE596D1B2DB90800238CB5 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE594B1B2DB90800238CB5 /* NSDate+RFC1123.m */; };
+		A1CE596E1B2DB90800238CB5 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE594D1B2DB90800238CB5 /* NSDictionary+RequestEncoding.m */; };
+		A1CE596F1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE594F1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.m */; };
+		A1CE59701B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59511B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.m */; };
+		A1CE59711B2DB90800238CB5 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59531B2DB90800238CB5 /* MKNetworkEngine.m */; };
+		A1CE59721B2DB90800238CB5 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59561B2DB90800238CB5 /* MKNetworkOperation.m */; };
+		A1CE59731B2DB90800238CB5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59591B2DB90800238CB5 /* Reachability.m */; };
+		A1CE59971B2DBD7800238CB5 /* JJApplicationLayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE597E1B2DBD7800238CB5 /* JJApplicationLayerManager.m */; };
+		A1CE59981B2DBD7800238CB5 /* JJLinkLayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59811B2DBD7800238CB5 /* JJLinkLayerManager.m */; };
+		A1CE59991B2DBD7800238CB5 /* JJNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59831B2DBD7800238CB5 /* JJNetworkEngine.m */; };
+		A1CE599A1B2DBD7800238CB5 /* JJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59861B2DBD7800238CB5 /* JJModel.m */; };
+		A1CE599B1B2DBD7800238CB5 /* JJOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59891B2DBD7800238CB5 /* JJOperation.m */; };
+		A1CE599C1B2DBD7800238CB5 /* JJProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE598C1B2DBD7800238CB5 /* JJProtocol.m */; };
+		A1CE59A01B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59951B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +71,75 @@
 		A11E21991B2C1F4D001CE732 /* JJNetworkDataModelKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJNetworkDataModelKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A11E219E1B2C1F4D001CE732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A11E219F1B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJNetworkDataModelKitTests.m; sourceTree = "<group>"; };
+		A1CE591D1B2DB90700238CB5 /* JJMantleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMantleHeader.h; sourceTree = "<group>"; };
+		A1CE59211B2DB90700238CB5 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
+		A1CE59221B2DB90700238CB5 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		A1CE59231B2DB90700238CB5 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		A1CE59241B2DB90700238CB5 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
+		A1CE59251B2DB90700238CB5 /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTScope.m; sourceTree = "<group>"; };
+		A1CE59261B2DB90700238CB5 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		A1CE59271B2DB90700238CB5 /* Mantle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mantle.h; sourceTree = "<group>"; };
+		A1CE59281B2DB90700238CB5 /* MTLJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLJSONAdapter.h; sourceTree = "<group>"; };
+		A1CE59291B2DB90700238CB5 /* MTLJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLJSONAdapter.m; sourceTree = "<group>"; };
+		A1CE592A1B2DB90700238CB5 /* MTLModel+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLModel+NSCoding.h"; sourceTree = "<group>"; };
+		A1CE592B1B2DB90700238CB5 /* MTLModel+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		A1CE592C1B2DB90700238CB5 /* MTLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLModel.h; sourceTree = "<group>"; };
+		A1CE592D1B2DB90700238CB5 /* MTLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLModel.m; sourceTree = "<group>"; };
+		A1CE592E1B2DB90700238CB5 /* MTLReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLReflection.h; sourceTree = "<group>"; };
+		A1CE592F1B2DB90700238CB5 /* MTLReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLReflection.m; sourceTree = "<group>"; };
+		A1CE59301B2DB90700238CB5 /* MTLTransformerErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLTransformerErrorHandling.h; sourceTree = "<group>"; };
+		A1CE59311B2DB90700238CB5 /* MTLTransformerErrorHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLTransformerErrorHandling.m; sourceTree = "<group>"; };
+		A1CE59321B2DB90700238CB5 /* MTLValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLValueTransformer.h; sourceTree = "<group>"; };
+		A1CE59331B2DB90700238CB5 /* MTLValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLValueTransformer.m; sourceTree = "<group>"; };
+		A1CE59341B2DB90700238CB5 /* NSArray+MTLManipulationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		A1CE59351B2DB90700238CB5 /* NSArray+MTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		A1CE59361B2DB90700238CB5 /* NSDictionary+MTLJSONKeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MTLJSONKeyPath.h"; sourceTree = "<group>"; };
+		A1CE59371B2DB90700238CB5 /* NSDictionary+MTLJSONKeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLJSONKeyPath.m"; sourceTree = "<group>"; };
+		A1CE59381B2DB90700238CB5 /* NSDictionary+MTLManipulationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		A1CE59391B2DB90700238CB5 /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		A1CE593A1B2DB90700238CB5 /* NSDictionary+MTLMappingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MTLMappingAdditions.h"; sourceTree = "<group>"; };
+		A1CE593B1B2DB90700238CB5 /* NSDictionary+MTLMappingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLMappingAdditions.m"; sourceTree = "<group>"; };
+		A1CE593C1B2DB90700238CB5 /* NSError+MTLModelException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+MTLModelException.h"; sourceTree = "<group>"; };
+		A1CE593D1B2DB90700238CB5 /* NSError+MTLModelException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+MTLModelException.m"; sourceTree = "<group>"; };
+		A1CE593E1B2DB90700238CB5 /* NSObject+MTLComparisonAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MTLComparisonAdditions.h"; sourceTree = "<group>"; };
+		A1CE593F1B2DB90700238CB5 /* NSObject+MTLComparisonAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MTLComparisonAdditions.m"; sourceTree = "<group>"; };
+		A1CE59401B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MTLInversionAdditions.h"; sourceTree = "<group>"; };
+		A1CE59411B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTLInversionAdditions.m"; sourceTree = "<group>"; };
+		A1CE59421B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MTLPredefinedTransformerAdditions.h"; sourceTree = "<group>"; };
+		A1CE59431B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
+		A1CE59481B2DB90800238CB5 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
+		A1CE59491B2DB90800238CB5 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
+		A1CE594A1B2DB90800238CB5 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
+		A1CE594B1B2DB90800238CB5 /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
+		A1CE594C1B2DB90800238CB5 /* NSDictionary+RequestEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RequestEncoding.h"; sourceTree = "<group>"; };
+		A1CE594D1B2DB90800238CB5 /* NSDictionary+RequestEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RequestEncoding.m"; sourceTree = "<group>"; };
+		A1CE594E1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		A1CE594F1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		A1CE59501B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		A1CE59511B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		A1CE59521B2DB90800238CB5 /* MKNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
+		A1CE59531B2DB90800238CB5 /* MKNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkEngine.m; sourceTree = "<group>"; };
+		A1CE59541B2DB90800238CB5 /* MKNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
+		A1CE59551B2DB90800238CB5 /* MKNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
+		A1CE59561B2DB90800238CB5 /* MKNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkOperation.m; sourceTree = "<group>"; };
+		A1CE59581B2DB90800238CB5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A1CE59591B2DB90800238CB5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A1CE597A1B2DBB6D00238CB5 /* JJNetworkDataModelKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JJNetworkDataModelKit-Prefix.pch"; sourceTree = "<group>"; };
+		A1CE597D1B2DBD7800238CB5 /* JJApplicationLayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJApplicationLayerManager.h; sourceTree = "<group>"; };
+		A1CE597E1B2DBD7800238CB5 /* JJApplicationLayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJApplicationLayerManager.m; sourceTree = "<group>"; };
+		A1CE59801B2DBD7800238CB5 /* JJLinkLayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJLinkLayerManager.h; sourceTree = "<group>"; };
+		A1CE59811B2DBD7800238CB5 /* JJLinkLayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJLinkLayerManager.m; sourceTree = "<group>"; };
+		A1CE59821B2DBD7800238CB5 /* JJNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJNetworkEngine.h; sourceTree = "<group>"; };
+		A1CE59831B2DBD7800238CB5 /* JJNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJNetworkEngine.m; sourceTree = "<group>"; };
+		A1CE59851B2DBD7800238CB5 /* JJModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJModel.h; sourceTree = "<group>"; };
+		A1CE59861B2DBD7800238CB5 /* JJModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJModel.m; sourceTree = "<group>"; };
+		A1CE59881B2DBD7800238CB5 /* JJOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJOperation.h; sourceTree = "<group>"; };
+		A1CE59891B2DBD7800238CB5 /* JJOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJOperation.m; sourceTree = "<group>"; };
+		A1CE598B1B2DBD7800238CB5 /* JJProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJProtocol.h; sourceTree = "<group>"; };
+		A1CE598C1B2DBD7800238CB5 /* JJProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJProtocol.m; sourceTree = "<group>"; };
+		A1CE59941B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JJNetworkDataModelKit+Test.h"; sourceTree = "<group>"; };
+		A1CE59951B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JJNetworkDataModelKit+Test.m"; sourceTree = "<group>"; };
+		A1CE59A21B2DC2C600238CB5 /* JJNetworkDataModelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJNetworkDataModelKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +181,8 @@
 		A11E21821B2C1F4D001CE732 /* JJNetworkDataModelKit */ = {
 			isa = PBXGroup;
 			children = (
+				A1CE59181B2DB90700238CB5 /* Vendor */,
+				A11E21A91B2C1F8D001CE732 /* API */,
 				A11E21871B2C1F4D001CE732 /* AppDelegate.h */,
 				A11E21881B2C1F4D001CE732 /* AppDelegate.m */,
 				A11E218A1B2C1F4D001CE732 /* ViewController.h */,
@@ -96,6 +198,7 @@
 		A11E21831B2C1F4D001CE732 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A1CE597A1B2DBB6D00238CB5 /* JJNetworkDataModelKit-Prefix.pch */,
 				A11E21841B2C1F4D001CE732 /* Info.plist */,
 				A11E21851B2C1F4D001CE732 /* main.m */,
 			);
@@ -117,6 +220,216 @@
 				A11E219E1B2C1F4D001CE732 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A11E21A91B2C1F8D001CE732 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE597B1B2DBD7800238CB5 /* JJNetworkDataModelKit */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		A1CE59181B2DB90700238CB5 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59191B2DB90700238CB5 /* Mantle */,
+				A1CE59441B2DB90800238CB5 /* MKNetworkKit */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		A1CE59191B2DB90700238CB5 /* Mantle */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE591A1B2DB90700238CB5 /* Helper */,
+				A1CE591F1B2DB90700238CB5 /* Mantle-2.0.1 */,
+			);
+			path = Mantle;
+			sourceTree = "<group>";
+		};
+		A1CE591A1B2DB90700238CB5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE591D1B2DB90700238CB5 /* JJMantleHeader.h */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		A1CE591F1B2DB90700238CB5 /* Mantle-2.0.1 */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59201B2DB90700238CB5 /* extobjc */,
+				A1CE59271B2DB90700238CB5 /* Mantle.h */,
+				A1CE59281B2DB90700238CB5 /* MTLJSONAdapter.h */,
+				A1CE59291B2DB90700238CB5 /* MTLJSONAdapter.m */,
+				A1CE592A1B2DB90700238CB5 /* MTLModel+NSCoding.h */,
+				A1CE592B1B2DB90700238CB5 /* MTLModel+NSCoding.m */,
+				A1CE592C1B2DB90700238CB5 /* MTLModel.h */,
+				A1CE592D1B2DB90700238CB5 /* MTLModel.m */,
+				A1CE592E1B2DB90700238CB5 /* MTLReflection.h */,
+				A1CE592F1B2DB90700238CB5 /* MTLReflection.m */,
+				A1CE59301B2DB90700238CB5 /* MTLTransformerErrorHandling.h */,
+				A1CE59311B2DB90700238CB5 /* MTLTransformerErrorHandling.m */,
+				A1CE59321B2DB90700238CB5 /* MTLValueTransformer.h */,
+				A1CE59331B2DB90700238CB5 /* MTLValueTransformer.m */,
+				A1CE59341B2DB90700238CB5 /* NSArray+MTLManipulationAdditions.h */,
+				A1CE59351B2DB90700238CB5 /* NSArray+MTLManipulationAdditions.m */,
+				A1CE59361B2DB90700238CB5 /* NSDictionary+MTLJSONKeyPath.h */,
+				A1CE59371B2DB90700238CB5 /* NSDictionary+MTLJSONKeyPath.m */,
+				A1CE59381B2DB90700238CB5 /* NSDictionary+MTLManipulationAdditions.h */,
+				A1CE59391B2DB90700238CB5 /* NSDictionary+MTLManipulationAdditions.m */,
+				A1CE593A1B2DB90700238CB5 /* NSDictionary+MTLMappingAdditions.h */,
+				A1CE593B1B2DB90700238CB5 /* NSDictionary+MTLMappingAdditions.m */,
+				A1CE593C1B2DB90700238CB5 /* NSError+MTLModelException.h */,
+				A1CE593D1B2DB90700238CB5 /* NSError+MTLModelException.m */,
+				A1CE593E1B2DB90700238CB5 /* NSObject+MTLComparisonAdditions.h */,
+				A1CE593F1B2DB90700238CB5 /* NSObject+MTLComparisonAdditions.m */,
+				A1CE59401B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.h */,
+				A1CE59411B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.m */,
+				A1CE59421B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */,
+				A1CE59431B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */,
+			);
+			path = "Mantle-2.0.1";
+			sourceTree = "<group>";
+		};
+		A1CE59201B2DB90700238CB5 /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59211B2DB90700238CB5 /* EXTKeyPathCoding.h */,
+				A1CE59221B2DB90700238CB5 /* EXTRuntimeExtensions.h */,
+				A1CE59231B2DB90700238CB5 /* EXTRuntimeExtensions.m */,
+				A1CE59241B2DB90700238CB5 /* EXTScope.h */,
+				A1CE59251B2DB90700238CB5 /* EXTScope.m */,
+				A1CE59261B2DB90700238CB5 /* metamacros.h */,
+			);
+			path = extobjc;
+			sourceTree = "<group>";
+		};
+		A1CE59441B2DB90800238CB5 /* MKNetworkKit */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59451B2DB90800238CB5 /* Help */,
+				A1CE59461B2DB90800238CB5 /* MKNetworkKit-0.87 */,
+			);
+			path = MKNetworkKit;
+			sourceTree = "<group>";
+		};
+		A1CE59451B2DB90800238CB5 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		A1CE59461B2DB90800238CB5 /* MKNetworkKit-0.87 */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59471B2DB90800238CB5 /* Categories */,
+				A1CE59521B2DB90800238CB5 /* MKNetworkEngine.h */,
+				A1CE59531B2DB90800238CB5 /* MKNetworkEngine.m */,
+				A1CE59541B2DB90800238CB5 /* MKNetworkKit.h */,
+				A1CE59551B2DB90800238CB5 /* MKNetworkOperation.h */,
+				A1CE59561B2DB90800238CB5 /* MKNetworkOperation.m */,
+				A1CE59571B2DB90800238CB5 /* Reachability */,
+			);
+			path = "MKNetworkKit-0.87";
+			sourceTree = "<group>";
+		};
+		A1CE59471B2DB90800238CB5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59481B2DB90800238CB5 /* NSData+MKBase64.h */,
+				A1CE59491B2DB90800238CB5 /* NSData+MKBase64.m */,
+				A1CE594A1B2DB90800238CB5 /* NSDate+RFC1123.h */,
+				A1CE594B1B2DB90800238CB5 /* NSDate+RFC1123.m */,
+				A1CE594C1B2DB90800238CB5 /* NSDictionary+RequestEncoding.h */,
+				A1CE594D1B2DB90800238CB5 /* NSDictionary+RequestEncoding.m */,
+				A1CE594E1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.h */,
+				A1CE594F1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.m */,
+				A1CE59501B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.h */,
+				A1CE59511B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A1CE59571B2DB90800238CB5 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59581B2DB90800238CB5 /* Reachability.h */,
+				A1CE59591B2DB90800238CB5 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		A1CE597B1B2DBD7800238CB5 /* JJNetworkDataModelKit */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59A21B2DC2C600238CB5 /* JJNetworkDataModelKit.h */,
+				A1CE597C1B2DBD7800238CB5 /* ApplicationLayer */,
+				A1CE597F1B2DBD7800238CB5 /* LinkLayer */,
+				A1CE59841B2DBD7800238CB5 /* Model */,
+				A1CE59871B2DBD7800238CB5 /* Operation */,
+				A1CE598A1B2DBD7800238CB5 /* ProtocolLayer */,
+				A1CE598D1B2DBD7800238CB5 /* Test */,
+			);
+			path = JJNetworkDataModelKit;
+			sourceTree = "<group>";
+		};
+		A1CE597C1B2DBD7800238CB5 /* ApplicationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE597D1B2DBD7800238CB5 /* JJApplicationLayerManager.h */,
+				A1CE597E1B2DBD7800238CB5 /* JJApplicationLayerManager.m */,
+			);
+			path = ApplicationLayer;
+			sourceTree = "<group>";
+		};
+		A1CE597F1B2DBD7800238CB5 /* LinkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59801B2DBD7800238CB5 /* JJLinkLayerManager.h */,
+				A1CE59811B2DBD7800238CB5 /* JJLinkLayerManager.m */,
+				A1CE59821B2DBD7800238CB5 /* JJNetworkEngine.h */,
+				A1CE59831B2DBD7800238CB5 /* JJNetworkEngine.m */,
+			);
+			path = LinkLayer;
+			sourceTree = "<group>";
+		};
+		A1CE59841B2DBD7800238CB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59851B2DBD7800238CB5 /* JJModel.h */,
+				A1CE59861B2DBD7800238CB5 /* JJModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A1CE59871B2DBD7800238CB5 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59881B2DBD7800238CB5 /* JJOperation.h */,
+				A1CE59891B2DBD7800238CB5 /* JJOperation.m */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		A1CE598A1B2DBD7800238CB5 /* ProtocolLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE598B1B2DBD7800238CB5 /* JJProtocol.h */,
+				A1CE598C1B2DBD7800238CB5 /* JJProtocol.m */,
+			);
+			path = ProtocolLayer;
+			sourceTree = "<group>";
+		};
+		A1CE598D1B2DBD7800238CB5 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				A1CE59941B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.h */,
+				A1CE59951B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +532,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1CE596B1B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+				A1CE595D1B2DB90800238CB5 /* EXTScope.m in Sources */,
+				A1CE59681B2DB90800238CB5 /* NSError+MTLModelException.m in Sources */,
+				A1CE596F1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				A1CE59661B2DB90800238CB5 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
+				A1CE59731B2DB90800238CB5 /* Reachability.m in Sources */,
+				A1CE595E1B2DB90800238CB5 /* MTLJSONAdapter.m in Sources */,
+				A1CE596D1B2DB90800238CB5 /* NSDate+RFC1123.m in Sources */,
+				A1CE59981B2DBD7800238CB5 /* JJLinkLayerManager.m in Sources */,
+				A1CE59631B2DB90800238CB5 /* MTLValueTransformer.m in Sources */,
+				A1CE59711B2DB90800238CB5 /* MKNetworkEngine.m in Sources */,
+				A1CE595F1B2DB90800238CB5 /* MTLModel+NSCoding.m in Sources */,
+				A1CE59A01B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m in Sources */,
+				A1CE596E1B2DB90800238CB5 /* NSDictionary+RequestEncoding.m in Sources */,
+				A1CE599B1B2DBD7800238CB5 /* JJOperation.m in Sources */,
+				A1CE59971B2DBD7800238CB5 /* JJApplicationLayerManager.m in Sources */,
 				A11E218C1B2C1F4D001CE732 /* ViewController.m in Sources */,
 				A11E21891B2C1F4D001CE732 /* AppDelegate.m in Sources */,
 				A11E21861B2C1F4D001CE732 /* main.m in Sources */,
+				A1CE59721B2DB90800238CB5 /* MKNetworkOperation.m in Sources */,
+				A1CE59601B2DB90800238CB5 /* MTLModel.m in Sources */,
+				A1CE596C1B2DB90800238CB5 /* NSData+MKBase64.m in Sources */,
+				A1CE59671B2DB90800238CB5 /* NSDictionary+MTLMappingAdditions.m in Sources */,
+				A1CE599C1B2DBD7800238CB5 /* JJProtocol.m in Sources */,
+				A1CE596A1B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
+				A1CE595C1B2DB90800238CB5 /* EXTRuntimeExtensions.m in Sources */,
+				A1CE59691B2DB90800238CB5 /* NSObject+MTLComparisonAdditions.m in Sources */,
+				A1CE59611B2DB90800238CB5 /* MTLReflection.m in Sources */,
+				A1CE59701B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				A1CE59641B2DB90800238CB5 /* NSArray+MTLManipulationAdditions.m in Sources */,
+				A1CE59621B2DB90800238CB5 /* MTLTransformerErrorHandling.m in Sources */,
+				A1CE599A1B2DBD7800238CB5 /* JJModel.m in Sources */,
+				A1CE59991B2DBD7800238CB5 /* JJNetworkEngine.m in Sources */,
+				A1CE59651B2DB90800238CB5 /* NSDictionary+MTLJSONKeyPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +693,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "JJNetworkDataModelKit/JJNetworkDataModelKit-Prefix.pch";
 				INFOPLIST_FILE = JJNetworkDataModelKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -359,6 +704,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "JJNetworkDataModelKit/JJNetworkDataModelKit-Prefix.pch";
 				INFOPLIST_FILE = JJNetworkDataModelKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +764,7 @@
 				A11E21A51B2C1F4D001CE732 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A11E21A61B2C1F4D001CE732 /* Build configuration list for PBXNativeTarget "JJNetworkDataModelKitTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +773,7 @@
 				A11E21A81B2C1F4D001CE732 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
