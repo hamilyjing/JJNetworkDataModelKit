@@ -66,7 +66,7 @@ JJNetworkDataModelKit是HTTP数据请求的通用框架，使用者只需创建�
 
 操作类集成JJOperation。操作类保存模型，默认archiver的格式，并且决定如何合并两次应答数据。
 
-* Write dictionary info for model class name and operation class name.
+* 将新建模型和协议写在字典里
 ```objc
 s_modelToOperationDic = @{@"JJWeatherModel": @"JJWeatherOperation",};
 ```
