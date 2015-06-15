@@ -12,4 +12,13 @@
 
 void jjNetworkDataModelKitTest()
 {
+    id object = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherModel")];
+    NSLog(@"%@", object);
+    
+    NSString *urlString = @"http://www.weather.com.cn/adat/sk/101010100.html";
+    
+    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherProtocol") resultBlock:^(JJIndexType index, BOOL success, id object)
+    {
+        NSLog(@"object: %@", object);
+    }];
 }

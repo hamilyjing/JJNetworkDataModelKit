@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A105D8E41B2E69BF00A80456 /* JJWeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A105D8E31B2E69BF00A80456 /* JJWeatherModel.m */; };
+		A105D8E71B2E69D700A80456 /* JJWeatherOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A105D8E61B2E69D700A80456 /* JJWeatherOperation.m */; };
+		A105D8EA1B2E6BBF00A80456 /* JJWeatherProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = A105D8E91B2E6BBF00A80456 /* JJWeatherProtocol.m */; };
+		A105D8EC1B2E6F8D00A80456 /* weather.archiver in Resources */ = {isa = PBXBuildFile; fileRef = A105D8EB1B2E6F8D00A80456 /* weather.archiver */; };
 		A11E21861B2C1F4D001CE732 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E21851B2C1F4D001CE732 /* main.m */; };
 		A11E21891B2C1F4D001CE732 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E21881B2C1F4D001CE732 /* AppDelegate.m */; };
 		A11E218C1B2C1F4D001CE732 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E218B1B2C1F4D001CE732 /* ViewController.m */; };
@@ -58,6 +62,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A105D8E21B2E69BF00A80456 /* JJWeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJWeatherModel.h; sourceTree = "<group>"; };
+		A105D8E31B2E69BF00A80456 /* JJWeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJWeatherModel.m; sourceTree = "<group>"; };
+		A105D8E51B2E69D700A80456 /* JJWeatherOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJWeatherOperation.h; sourceTree = "<group>"; };
+		A105D8E61B2E69D700A80456 /* JJWeatherOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJWeatherOperation.m; sourceTree = "<group>"; };
+		A105D8E81B2E6BBF00A80456 /* JJWeatherProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJWeatherProtocol.h; sourceTree = "<group>"; };
+		A105D8E91B2E6BBF00A80456 /* JJWeatherProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJWeatherProtocol.m; sourceTree = "<group>"; };
+		A105D8EB1B2E6F8D00A80456 /* weather.archiver */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = weather.archiver; sourceTree = "<group>"; };
 		A11E21801B2C1F4D001CE732 /* JJNetworkDataModelKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJNetworkDataModelKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A11E21841B2C1F4D001CE732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A11E21851B2C1F4D001CE732 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -426,8 +437,15 @@
 		A1CE598D1B2DBD7800238CB5 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				A105D8EB1B2E6F8D00A80456 /* weather.archiver */,
 				A1CE59941B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.h */,
 				A1CE59951B2DBD7800238CB5 /* JJNetworkDataModelKit+Test.m */,
+				A105D8E21B2E69BF00A80456 /* JJWeatherModel.h */,
+				A105D8E31B2E69BF00A80456 /* JJWeatherModel.m */,
+				A105D8E51B2E69D700A80456 /* JJWeatherOperation.h */,
+				A105D8E61B2E69D700A80456 /* JJWeatherOperation.m */,
+				A105D8E81B2E6BBF00A80456 /* JJWeatherProtocol.h */,
+				A105D8E91B2E6BBF00A80456 /* JJWeatherProtocol.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -514,6 +532,7 @@
 			files = (
 				A11E218F1B2C1F4D001CE732 /* Main.storyboard in Resources */,
 				A11E21941B2C1F4D001CE732 /* LaunchScreen.xib in Resources */,
+				A105D8EC1B2E6F8D00A80456 /* weather.archiver in Resources */,
 				A11E21911B2C1F4D001CE732 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,11 +555,13 @@
 				A1CE595D1B2DB90800238CB5 /* EXTScope.m in Sources */,
 				A1CE59681B2DB90800238CB5 /* NSError+MTLModelException.m in Sources */,
 				A1CE596F1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				A105D8EA1B2E6BBF00A80456 /* JJWeatherProtocol.m in Sources */,
 				A1CE59661B2DB90800238CB5 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				A1CE59731B2DB90800238CB5 /* Reachability.m in Sources */,
 				A1CE595E1B2DB90800238CB5 /* MTLJSONAdapter.m in Sources */,
 				A1CE596D1B2DB90800238CB5 /* NSDate+RFC1123.m in Sources */,
 				A1CE59981B2DBD7800238CB5 /* JJLinkLayerManager.m in Sources */,
+				A105D8E71B2E69D700A80456 /* JJWeatherOperation.m in Sources */,
 				A1CE59631B2DB90800238CB5 /* MTLValueTransformer.m in Sources */,
 				A1CE59711B2DB90800238CB5 /* MKNetworkEngine.m in Sources */,
 				A1CE595F1B2DB90800238CB5 /* MTLModel+NSCoding.m in Sources */,
@@ -563,6 +584,7 @@
 				A1CE59701B2DB90800238CB5 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				A1CE59641B2DB90800238CB5 /* NSArray+MTLManipulationAdditions.m in Sources */,
 				A1CE59621B2DB90800238CB5 /* MTLTransformerErrorHandling.m in Sources */,
+				A105D8E41B2E69BF00A80456 /* JJWeatherModel.m in Sources */,
 				A1CE599A1B2DBD7800238CB5 /* JJModel.m in Sources */,
 				A1CE59991B2DBD7800238CB5 /* JJNetworkEngine.m in Sources */,
 				A1CE59651B2DB90800238CB5 /* NSDictionary+MTLJSONKeyPath.m in Sources */,

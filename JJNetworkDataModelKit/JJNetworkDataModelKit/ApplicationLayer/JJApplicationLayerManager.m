@@ -46,7 +46,7 @@ static NSDictionary *s_modelToOperationDic;
     if (self)
     {
 #warning - you should write the model class name to operation class name.
-        s_modelToOperationDic = @{@"JJTucaoSquareModel": @"JJTucaoSquareOperation",};
+        s_modelToOperationDic = @{@"JJWeatherModel": @"JJWeatherOperation",};
         
         self.requestResultDic = [NSMutableDictionary dictionary];
         self.lock = OS_SPINLOCK_INIT;
