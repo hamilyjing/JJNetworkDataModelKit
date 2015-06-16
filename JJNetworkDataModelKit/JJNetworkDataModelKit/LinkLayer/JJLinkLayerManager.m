@@ -12,6 +12,7 @@
 
 #import "JJNetworkEngine.h"
 #import "JJProtocol.h"
+#import "JJModel.h"
 
 @interface JJLinkLayerManager ()
 
@@ -44,12 +45,13 @@
     return self;
 }
 
-- (JJIndexType)httpRequest:(NSString *)urlString_ index:(JJIndexType)index_ protocolClass:(Class)protocolClass_
+- (JJIndexType)httpRequest:(NSString *)urlString_ index:(JJIndexType)index_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_
 {
     JJNetworkEngine *engine = [[JJNetworkEngine alloc] initWithHostName:@"www.baidu.com"];
     engine.urlString = urlString_;
     engine.index = index_;
     engine.protocolClass = protocolClass_;
+    engine.identityID = identityID_;
     
     [self saveEngine:index_ engine:engine];
     
@@ -73,9 +75,10 @@
                                                        error:nil];
         
         JJProtocol *protocol = [[engine_.protocolClass alloc] init];
-        id object = [protocol decodeTemplate:content];
+        JJModel *model = [protocol decodeTemplate:content];
+        model.identityID = engine_.identityID;
         
-        [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:object error:error_];
+        [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:model error:error_];
         
     } while (NO);
     

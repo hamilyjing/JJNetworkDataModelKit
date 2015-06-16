@@ -26,4 +26,9 @@
     return nil;
 }
 
++ (NSArray *)imagePropetyNames
+{
+    return nil;
+}
+
 @end

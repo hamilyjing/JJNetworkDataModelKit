@@ -12,6 +12,7 @@
 
 #import "JJLinkLayerManager.h"
 #import "JJOperation.h"
+#import "JJModel.h"
 
 static NSDictionary *s_modelToOperationDic;
 
@@ -57,18 +58,31 @@ static NSDictionary *s_modelToOperationDic;
     return self;
 }
 
-- (id)getModel:(Class)modelClass
+- (id)getModel:(Class)modelClass_
 {
-    JJOperation *operation = [self getOperation:modelClass];
-    JJModel *model = operation.model;
+    id model = [self getModel:modelClass_ identityID:nil];
+    return model;
+}
+
+- (id)getModel:(Class)modelClass_ identityID:(NSString *)identityID_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    id model = [operation getModelByIdentityID:identityID_];
     return model;
 }
 
 - (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ resultBlock:(RequestResult)resultBlock_
 {
+    JJIndexType index = [self httpRequest:urlString_ protocolClass:protocolClass_ identityID:nil resultBlock:resultBlock_];
+    
+    return index;
+}
+
+- (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_ resultBlock:(RequestResult)resultBlock_
+{
     JJIndexType index = [self getIndex];
     
-    JJIndexType anotherIndex = [[JJLinkLayerManager sharedInstance] httpRequest:urlString_ index:index protocolClass:protocolClass_];
+    JJIndexType anotherIndex = [[JJLinkLayerManager sharedInstance] httpRequest:urlString_ index:index protocolClass:protocolClass_ identityID:identityID_];
     
     if (index != anotherIndex)
     {
@@ -80,6 +94,42 @@ static NSDictionary *s_modelToOperationDic;
     return index;
 }
 
+- (void)removeAllCache:(Class)modelClass_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    [operation removeAllCache];
+}
+
+- (void)removeAllMemoryCache:(Class)modelClass_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    [operation removeAllMemoryCache];
+}
+
+- (void)removeAllLocalCache:(Class)modelClass_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    [operation removeAllLocalCache];
+}
+
+- (void)removeCache:(Class)modelClass_ identityID:(NSString *)identityID_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    [operation removeCache:identityID_];
+}
+
+- (void)removeMemoryCache:(Class)modelClass_ identityID:(NSString *)identityID_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    [operation removeMemoryCache:identityID_];
+}
+
+- (void)removeLocalCache:(Class)modelClass_ identityID:(NSString *)identityID_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    [operation removeLocalCache:identityID_];
+}
+
 - (void)httpResponse:(JJIndexType)index object:(id)object error:(NSError *)error
 {
     RequestResult block = [self getResultBlockAndRemove:index];
@@ -88,22 +138,47 @@ static NSDictionary *s_modelToOperationDic;
         return;
     }
     
-    if (object)
+    if (error || ![object isKindOfClass:[JJModel class]])
     {
-        JJOperation *operation = [self getOperation:[object class]];
-        
-        object = [operation operateWithNewObject:object];
-        operation.model = object;
-        
         dispatch_async(dispatch_get_main_queue(), ^{
-            block(index, YES, object);
+            BOOL needMemoryCache = YES;
+            BOOL needLocalCache = YES;
+            block(index, NO, error, 0, &needMemoryCache, &needLocalCache);
         });
         
         return;
     }
     
+    JJModel *model = (JJModel *)object;
+    JJOperation *operation = [self getOperation:[model class]];
+    
+    NSInteger updateCount = 0;
+    model = [operation operateWithNewObject:model updateCount:&updateCount];
+    
+    if (updateCount != 0)
+    {
+        [operation setModel:model identityID:model.identityID];
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        block(index, NO, error);
+        BOOL needMemoryCache = YES;
+        BOOL needLocalCache = YES;
+        block(index, YES, model, updateCount, &needMemoryCache, &needLocalCache);
+        
+        if (0 == updateCount)
+        {
+            return;
+        }
+        
+        if (!needMemoryCache)
+        {
+            [operation removeMemoryCache:model.identityID];
+        }
+        
+        if (needLocalCache)
+        {
+            [operation saveObjectToLocalCache:model identityID:model.identityID];
+        }
     });
 }
 

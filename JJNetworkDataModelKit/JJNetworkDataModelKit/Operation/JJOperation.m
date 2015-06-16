@@ -10,49 +10,97 @@
 
 #import "JJModel.h"
 
+static NSString *ModelDictionaryEmptyKey = @"JJModel";
+
 @implementation JJOperation
 
-- (JJModel *)model
+- (instancetype)init
 {
-    if (_model)
+    self = [super init];
+    if (self)
     {
-        return _model;
+        self.modelDic = [NSMutableDictionary dictionary];
     }
-    
-    _model = [self getObjectFromSavedFile];
-    return _model;
+    return self;
 }
 
-- (void)setModel:(JJModel *)model_
+- (id)getModelByIdentityID:(NSString *)identityID_
 {
-    if (model_ == _model)
+    NSString *key = [self getTrueIdentityID:identityID_];
+    id model = _modelDic[key];
+    if (model)
     {
-        return;
+        return model;
     }
     
-    _model = model_;
-    
-    [self saveObjectToSavedFile:_model];
+    model = [self getObjectFromLocalCache:key];
+    return model;
 }
 
-- (id)operateWithNewObject:(id)newObject
+- (void)setModel:(id)model_ identityID:(NSString *)identityID_
+{
+    NSString *key = [self getTrueIdentityID:identityID_];
+    _modelDic[key] = model_;
+}
+
+- (id)operateWithNewObject:(id)newObject updateCount:(NSInteger *)updateCount
 {
     return newObject;
 }
 
-- (id)getObjectFromSavedFile
+- (void)removeAllCache
+{
+    [self removeAllLocalCache];
+    [self removeAllMemoryCache];
+}
+
+- (void)removeAllMemoryCache
+{
+    [_modelDic removeAllObjects];
+}
+
+- (void)removeAllLocalCache
+{
+    [_modelDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+    {
+        [self removeLocalCache:key];
+    }];
+}
+
+- (void)removeCache:(NSString *)identityID_
+{
+    [self removeCache:identityID_];
+    [self removeMemoryCache:identityID_];
+}
+
+- (void)removeMemoryCache:(NSString *)identityID_
+{
+    NSString *key = [self getTrueIdentityID:identityID_];
+    [_modelDic removeObjectForKey:key];
+}
+
+- (void)removeLocalCache:(NSString *)identityID_
+{
+    NSString *key = [self getTrueIdentityID:identityID_];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath:[self savedFilePathIncludeIdentityID:key] error:&error];
+}
+
+- (id)getObjectFromLocalCache:(NSString *)identityID_
 {
     id object;
     
     do {
-        NSString *filePath = [self savedFilePath];
+        NSString *filePath = [self savedFilePathIncludeIdentityID:identityID_];
         object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
         if (object)
         {
             break;
         }
         
-        filePath = [[NSBundle mainBundle] pathForResource:[self savedFileName] ofType:[self savedFileType]];
+        NSString *fileName = [NSString stringWithFormat:@"%@_%@", [self savedFileName], identityID_];
+        filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:[self savedFileType]];
         object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
         
     } while (NO);
@@ -60,16 +108,16 @@
     return object;
 }
 
-- (BOOL)saveObjectToSavedFile:(id)object_
+- (BOOL)saveObjectToLocalCache:(id)object_ identityID:(NSString *)identityID_
 {
-    NSString *filePath = [self savedFilePath];
+    NSString *filePath = [self savedFilePathIncludeIdentityID:identityID_];
     BOOL success = [NSKeyedArchiver archiveRootObject:object_ toFile:filePath];
     return success;
 }
 
 #pragma mark - file config
 
-- (NSString *)savedFilePath
+- (NSString *)savedFilePathIncludeIdentityID:(NSString *)identityID
 {
     static NSString *filePath = nil;
     if (filePath)
@@ -77,7 +125,7 @@
         return filePath;
     }
     
-    filePath = [NSString stringWithFormat:@"%@/%@.%@", [self savedFileDirectory], [self savedFileName], [self savedFileType]];
+    filePath = [NSString stringWithFormat:@"%@/%@_%@.%@", [self savedFileDirectory], [self savedFileName], identityID, [self savedFileType]];
     return filePath;
 }
 
@@ -94,6 +142,13 @@
 - (NSString *)savedFileType
 {
     return @"archiver";
+}
+
+#pragma mark - Private
+
+- (NSString *)getTrueIdentityID:(NSString *)identityID_
+{
+    return identityID_ ? identityID_ : ModelDictionaryEmptyKey;
 }
 
 @end

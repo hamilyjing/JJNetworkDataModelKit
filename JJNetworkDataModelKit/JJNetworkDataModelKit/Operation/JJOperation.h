@@ -8,23 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-@class JJModel;
-
 @interface JJOperation : NSObject
-{
-    JJModel *_model;
-}
 
-@property (nonatomic, strong) JJModel *model;
+@property (nonatomic, strong) NSMutableDictionary *modelDic;
 
-- (id)operateWithNewObject:(id)newObject;
+- (id)getModelByIdentityID:(NSString *)identityID;
+- (void)setModel:(id)model identityID:(NSString *)identityID;
+
+- (id)operateWithNewObject:(id)newObject updateCount:(NSInteger *)updateCount;
+
+- (void)removeAllCache;
+- (void)removeAllMemoryCache;
+- (void)removeAllLocalCache;
+
+- (void)removeCache:(NSString *)identityID; // include memory and local cache
+- (void)removeMemoryCache:(NSString *)identityID;
+- (void)removeLocalCache:(NSString *)identityID;
 
 // default NSKeyedArchiver and NSKeyedUnarchiver
-- (id)getObjectFromSavedFile;
-- (BOOL)saveObjectToSavedFile:(id)object;
+- (id)getObjectFromLocalCache:(NSString *)identityID;
+- (BOOL)saveObjectToLocalCache:(id)object identityID:(NSString *)identityID;
 
 // file config
-- (NSString *)savedFilePath; // combine directory, name and type
+- (NSString *)savedFilePathIncludeIdentityID:(NSString *)identityID;
 - (NSString *)savedFileDirectory;
 - (NSString *)savedFileName;
 - (NSString *)savedFileType;
