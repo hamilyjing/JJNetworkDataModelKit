@@ -21,7 +21,16 @@
         return error;
     }
     
-    return [self decode:content];
+    id object = [self decode:content];
+    
+    if (!object)
+    {
+        NSString *message = [NSString stringWithFormat:@"Can not decode content: %@", content];
+        NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:101 userInfo:@{NSLocalizedDescriptionKey: message}];
+        return error;
+    }
+    
+    return object;
 }
 
 - (NSArray *)arrayData:(Class)modelClass_ fromArrayContent:(NSArray *)arrayContent_

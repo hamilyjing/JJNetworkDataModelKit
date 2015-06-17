@@ -10,6 +10,9 @@
 
 typedef unsigned long JJIndexType;
 
+extern NSString *JJhttpBodyKey;
+extern NSString *JJhttpMethodKey;
+
 typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache);
 
 @class JJTucaoSquareModel;
@@ -22,9 +25,9 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 
 - (id)getModel:(Class)modelClass identityID:(NSString *)identityID;
 
-- (JJIndexType)httpRequest:(NSString *)urlString protocolClass:(Class)protocolClass resultBlock:(RequestResult)resultBlock;
+- (JJIndexType)httpRequest:(NSString *)urlString protocolClass:(Class)protocolClass httpParams:(NSDictionary *)httpParams resultBlock:(RequestResult)resultBlock;
 
-- (JJIndexType)httpRequest:(NSString *)urlString protocolClass:(Class)protocolClass identityID:(NSString *)identityID resultBlock:(RequestResult)resultBlock;
+- (JJIndexType)httpRequest:(NSString *)urlString protocolClass:(Class)protocolClass identityID:(NSString *)identityID httpParams:(NSDictionary *)httpParams resultBlock:(RequestResult)resultBlock;
 
 - (void)removeAllCache:(Class)modelClass;
 - (void)removeAllMemoryCache:(Class)modelClass;

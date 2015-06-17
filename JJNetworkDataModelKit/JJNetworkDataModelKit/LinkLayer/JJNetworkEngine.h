@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *urlString;
 @property (nonatomic, assign) Class protocolClass;
 @property (nonatomic, copy) NSString *identityID;
+@property (nonatomic, strong) NSDictionary *httpParams;
 
 - (void)httpRequest;
 - (void)cancelHttpRequest;

@@ -24,6 +24,21 @@
     
     self.netWorkOperation = [self operationWithURLString:_urlString];
     
+    NSDictionary *body = _httpParams[JJhttpBodyKey];
+    NSString *method = _httpParams[JJhttpMethodKey];
+    method = method ? method : @"GET";
+    
+    [self operationWithURLString:_urlString params:body httpMethod:method];
+    
+    NSAssert(_netWorkOperation, @"Network operation can not be nil");
+    
+    if (!_netWorkOperation)
+    {
+        NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:100 userInfo:@{NSLocalizedDescriptionKey: @"Can not create network operation object!"}];
+        [[JJLinkLayerManager sharedInstance] httpResponse:self completedOperation:nil error:error];
+        return;
+    }
+    
     __weak JJNetworkEngine *weakSelf = self;
     
     [_netWorkOperation addCompletionHandler:^(MKNetworkOperation *completedOperation)

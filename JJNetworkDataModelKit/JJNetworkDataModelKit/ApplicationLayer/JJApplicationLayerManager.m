@@ -14,6 +14,9 @@
 #import "JJOperation.h"
 #import "JJModel.h"
 
+NSString *JJhttpBodyKey = @"JJhttpBodyKey";
+NSString *JJhttpMethodKey = @"JJhttpMethodKey";
+
 static NSDictionary *s_modelToOperationDic;
 
 @interface JJApplicationLayerManager ()
@@ -71,25 +74,20 @@ static NSDictionary *s_modelToOperationDic;
     return model;
 }
 
-- (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ resultBlock:(RequestResult)resultBlock_
+- (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
 {
-    JJIndexType index = [self httpRequest:urlString_ protocolClass:protocolClass_ identityID:nil resultBlock:resultBlock_];
+    JJIndexType index = [self httpRequest:urlString_ protocolClass:protocolClass_ identityID:nil httpParams:httpParams_ resultBlock:resultBlock_];
     
     return index;
 }
 
-- (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_ resultBlock:(RequestResult)resultBlock_
+- (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
 {
     JJIndexType index = [self getIndex];
     
-    JJIndexType anotherIndex = [[JJLinkLayerManager sharedInstance] httpRequest:urlString_ index:index protocolClass:protocolClass_ identityID:identityID_];
-    
-    if (index != anotherIndex)
-    {
-        return 0;
-    }
-    
     [self saveRequestResult:index resultBlock:resultBlock_];
+    
+    [[JJLinkLayerManager sharedInstance] httpRequest:urlString_ index:index protocolClass:protocolClass_ identityID:identityID_ httpParams:httpParams_];
     
     return index;
 }
@@ -155,11 +153,6 @@ static NSDictionary *s_modelToOperationDic;
     NSInteger updateCount = 0;
     model = [operation operateWithNewObject:model updateCount:&updateCount];
     
-    if (updateCount != 0)
-    {
-        [operation setModel:model identityID:model.identityID];
-    }
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         BOOL needMemoryCache = YES;
         BOOL needLocalCache = YES;
@@ -170,9 +163,9 @@ static NSDictionary *s_modelToOperationDic;
             return;
         }
         
-        if (!needMemoryCache)
+        if (needMemoryCache)
         {
-            [operation removeMemoryCache:model.identityID];
+            [operation setModel:model identityID:model.identityID];
         }
         
         if (needLocalCache)

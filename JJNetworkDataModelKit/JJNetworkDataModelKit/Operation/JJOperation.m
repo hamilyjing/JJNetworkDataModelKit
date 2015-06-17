@@ -39,6 +39,11 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
 - (void)setModel:(id)model_ identityID:(NSString *)identityID_
 {
+    if (!model_)
+    {
+        return;
+    }
+    
     NSString *key = [self getTrueIdentityID:identityID_];
     _modelDic[key] = model_;
 }
@@ -81,10 +86,8 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
 - (void)removeLocalCache:(NSString *)identityID_
 {
-    NSString *key = [self getTrueIdentityID:identityID_];
-    
     NSError *error;
-    [[NSFileManager defaultManager] removeItemAtPath:[self savedFilePathIncludeIdentityID:key] error:&error];
+    [[NSFileManager defaultManager] removeItemAtPath:[self savedFilePathIncludeIdentityID:identityID_] error:&error];
 }
 
 - (id)getObjectFromLocalCache:(NSString *)identityID_
@@ -117,15 +120,11 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
 #pragma mark - file config
 
-- (NSString *)savedFilePathIncludeIdentityID:(NSString *)identityID
+- (NSString *)savedFilePathIncludeIdentityID:(NSString *)identityID_
 {
-    static NSString *filePath = nil;
-    if (filePath)
-    {
-        return filePath;
-    }
+    NSString *identityID = [self getTrueIdentityID:identityID_];
     
-    filePath = [NSString stringWithFormat:@"%@/%@_%@.%@", [self savedFileDirectory], [self savedFileName], identityID, [self savedFileType]];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@_%@.%@", [self savedFileDirectory], [self savedFileName], identityID, [self savedFileType]];
     return filePath;
 }
 

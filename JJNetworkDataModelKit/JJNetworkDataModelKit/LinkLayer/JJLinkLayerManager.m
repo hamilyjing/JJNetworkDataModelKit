@@ -45,13 +45,14 @@
     return self;
 }
 
-- (JJIndexType)httpRequest:(NSString *)urlString_ index:(JJIndexType)index_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_
+- (JJIndexType)httpRequest:(NSString *)urlString_ index:(JJIndexType)index_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_
 {
     JJNetworkEngine *engine = [[JJNetworkEngine alloc] initWithHostName:@"www.baidu.com"];
     engine.urlString = urlString_;
     engine.index = index_;
     engine.protocolClass = protocolClass_;
     engine.identityID = identityID_;
+    engine.httpParams = httpParams_;
     
     [self saveEngine:index_ engine:engine];
     
@@ -75,10 +76,23 @@
                                                        error:nil];
         
         JJProtocol *protocol = [[engine_.protocolClass alloc] init];
-        JJModel *model = [protocol decodeTemplate:content];
-        model.identityID = engine_.identityID;
+        id object = [protocol decodeTemplate:content];
         
-        [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:model error:error_];
+        if ([object isKindOfClass:JJModel.class])
+        {
+            JJModel *model = (JJModel *)object;
+            model.identityID = engine_.identityID;
+            
+            [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:model error:nil];
+        }
+        else if ([object isKindOfClass:NSError.class])
+        {
+            [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:nil error:object];
+        }
+        else
+        {
+            NSAssert(NO, @"Can not know object: %@", object);
+        }
         
     } while (NO);
     
