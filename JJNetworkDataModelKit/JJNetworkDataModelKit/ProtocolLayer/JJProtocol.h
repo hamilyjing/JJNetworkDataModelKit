@@ -12,8 +12,6 @@
 
 - (id)decodeTemplate:(NSDictionary *)content;
 
-- (NSArray *)arrayData:(Class)modelClass fromArrayContent:(NSArray *)arrayContent;
-
 // Overwrite by son
 - (id)decode:(NSDictionary *)content;
 

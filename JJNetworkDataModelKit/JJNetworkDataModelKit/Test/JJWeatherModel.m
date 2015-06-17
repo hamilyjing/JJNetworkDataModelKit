@@ -10,6 +10,18 @@
 
 @implementation JJWeatherModel
 
++ (id)modelByContent:(NSDictionary *)content
+{
+    NSError *error;
+    JJWeatherModel *weatherModel = [MTLJSONAdapter modelOfClass:JJWeatherModel.class fromJSONDictionary:content[@"weatherinfo"] error:&error];
+    if (nil == weatherModel)
+    {
+        return error;
+    }
+    
+    return weatherModel;
+}
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return @{

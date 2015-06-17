@@ -14,13 +14,7 @@
 
 - (id)decode:(NSDictionary *)content
 {
-    NSError *error;
-    JJWeatherModel *weatherModel = [MTLJSONAdapter modelOfClass:JJWeatherModel.class fromJSONDictionary:content[@"weatherinfo"] error:&error];
-    if (nil == weatherModel)
-    {
-        return error;
-    }
-    
+    JJWeatherModel *weatherModel = [JJWeatherModel modelByContent:content];
     return weatherModel;
 }
 

@@ -31,4 +31,30 @@
     return nil;
 }
 
++ (id)modelByContent:(NSDictionary *)content
+{
+    return nil;
+}
+
++ (NSArray *)arrayData:(Class)modelClass_ fromArrayContent:(NSArray *)arrayContent_
+{
+    NSMutableArray *tempArray = [NSMutableArray array];
+    
+    [arrayContent_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+     {
+         NSError *error;
+         id object = [MTLJSONAdapter modelOfClass:modelClass_ fromJSONDictionary:obj error:&error];
+         if (object)
+         {
+             [tempArray addObject:object];
+         }
+         else
+         {
+             NSAssert(NO, @"%@", error);
+         }
+     }];
+    
+    return [tempArray count] > 0 ? tempArray : nil;
+}
+
 @end

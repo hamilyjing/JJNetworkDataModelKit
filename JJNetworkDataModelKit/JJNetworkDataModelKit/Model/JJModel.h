@@ -16,4 +16,8 @@
 
 + (NSArray *)imagePropetyNames;
 
++ (id)modelByContent:(NSDictionary *)content;
+
++ (NSArray *)arrayData:(Class)modelClass fromArrayContent:(NSArray *)arrayContent;
+
 @end
