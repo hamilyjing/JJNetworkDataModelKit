@@ -30,6 +30,8 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 
 - (JJIndexType)httpRequest:(NSString *)urlString protocolClass:(Class)protocolClass httpParams:(NSDictionary *)httpParams resultBlock:(RequestResult)resultBlock;
 
+- (void)cancelHttpRequest:(JJIndexType)index;
+
 - (JJIndexType)httpRequest:(NSString *)urlString protocolClass:(Class)protocolClass identityID:(NSString *)identityID httpParams:(NSDictionary *)httpParams resultBlock:(RequestResult)resultBlock;
 
 - (void)removeAllCache:(Class)modelClass;

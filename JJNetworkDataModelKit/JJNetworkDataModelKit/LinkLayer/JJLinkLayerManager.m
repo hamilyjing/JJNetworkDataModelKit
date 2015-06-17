@@ -61,6 +61,12 @@
     return index_;
 }
 
+- (void)cancelHttpRequest:(JJIndexType)index_
+{
+    JJNetworkEngine *engine = [self getEngineAndRemove:index_];
+    [engine cancelHttpRequest];
+}
+
 - (void)httpResponse:(JJNetworkEngine*)engine_ completedOperation:(MKNetworkOperation *)completedOperation_ error:(NSError *)error_
 {
     do {
@@ -100,6 +106,29 @@
 }
 
 #pragma mark - Private
+
+- (JJNetworkEngine *)getEngine:(JJIndexType)index_
+{
+    JJNetworkEngine *engine;
+    
+    OSSpinLockLock(&_lock);
+    engine = _engineDic[@(index_)];
+    OSSpinLockUnlock(&_lock);
+    
+    return engine;
+}
+
+- (JJNetworkEngine *)getEngineAndRemove:(JJIndexType)index_
+{
+    JJNetworkEngine *engine;
+    
+    OSSpinLockLock(&_lock);
+    engine = _engineDic[@(index_)];
+    [_engineDic removeObjectForKey:@(index_)];
+    OSSpinLockUnlock(&_lock);
+    
+    return engine;
+}
 
 - (void)saveEngine:(JJIndexType)index_ engine:(JJNetworkEngine*)engine_
 {

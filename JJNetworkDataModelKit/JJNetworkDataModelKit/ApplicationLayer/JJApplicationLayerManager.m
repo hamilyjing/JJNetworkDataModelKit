@@ -83,6 +83,13 @@ static NSDictionary *s_modelToOperationDic;
     return index;
 }
 
+- (void)cancelHttpRequest:(JJIndexType)index_
+{
+    [self removeResultBlock:index_];
+    
+    [[JJLinkLayerManager sharedInstance] cancelHttpRequest:index_];
+}
+
 - (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
 {
     JJIndexType index = [self getIndex];

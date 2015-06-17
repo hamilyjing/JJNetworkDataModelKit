@@ -43,10 +43,14 @@
     
     [_netWorkOperation addCompletionHandler:^(MKNetworkOperation *completedOperation)
     {
-        [[JJLinkLayerManager sharedInstance] httpResponse:weakSelf completedOperation:completedOperation error:nil];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[JJLinkLayerManager sharedInstance] httpResponse:weakSelf completedOperation:completedOperation error:nil];
+        });
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error)
     {
-        [[JJLinkLayerManager sharedInstance] httpResponse:weakSelf completedOperation:nil error:error];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[JJLinkLayerManager sharedInstance] httpResponse:weakSelf completedOperation:nil error:error];
+        });
     }];
     
     [self enqueueOperation:_netWorkOperation];
