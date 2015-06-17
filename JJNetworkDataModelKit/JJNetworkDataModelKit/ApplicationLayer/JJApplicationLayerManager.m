@@ -48,10 +48,7 @@ static NSDictionary *s_modelToOperationDic;
 {
     self = [super init];
     if (self)
-    {
-#warning - you should write the model class name to operation class name.
-        s_modelToOperationDic = @{@"JJWeatherModel": @"JJWeatherOperation",};
-        
+    {        
         self.requestResultDic = [NSMutableDictionary dictionary];
         self.lock = OS_SPINLOCK_INIT;
         
@@ -59,6 +56,11 @@ static NSDictionary *s_modelToOperationDic;
     }
     
     return self;
+}
+
++ (void)setModelAndOperationNameDictionary:(NSDictionary *)dic
+{
+    s_modelToOperationDic = dic;
 }
 
 - (id)getModel:(Class)modelClass_

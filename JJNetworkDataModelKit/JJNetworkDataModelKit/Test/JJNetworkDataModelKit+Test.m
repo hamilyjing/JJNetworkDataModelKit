@@ -12,6 +12,9 @@
 
 void jjNetworkDataModelKitTest()
 {
+    NSDictionary *dic = @{@"JJWeatherModel": @"JJWeatherOperation",};
+    [JJApplicationLayerManager setModelAndOperationNameDictionary:dic];
+    
     NSString *key = @"jjKey";
     
     id object = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherModel")];

@@ -50,6 +50,7 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
 - (id)operateWithNewObject:(id)newObject updateCount:(NSInteger *)updateCount
 {
+    *updateCount = 1;
     return newObject;
 }
 

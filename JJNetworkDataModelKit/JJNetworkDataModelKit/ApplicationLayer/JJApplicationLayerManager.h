@@ -21,6 +21,9 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 
 + (instancetype)sharedInstance;
 
+#warning - you should first set below function.
++ (void)setModelAndOperationNameDictionary:(NSDictionary *)dic;
+
 - (id)getModel:(Class)modelClass;
 
 - (id)getModel:(Class)modelClass identityID:(NSString *)identityID;
