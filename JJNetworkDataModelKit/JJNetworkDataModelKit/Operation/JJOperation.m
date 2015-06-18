@@ -8,8 +8,6 @@
 
 #import "JJOperation.h"
 
-#import "JJModel.h"
-
 static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
 @implementation JJOperation

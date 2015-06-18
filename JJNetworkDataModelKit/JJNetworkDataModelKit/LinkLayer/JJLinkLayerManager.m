@@ -12,7 +12,7 @@
 
 #import "JJNetworkEngine.h"
 #import "JJProtocol.h"
-#import "JJModel.h"
+#import "JJModelDelegate.h"
 
 @interface JJLinkLayerManager ()
 
@@ -84,9 +84,9 @@
         JJProtocol *protocol = [[engine_.protocolClass alloc] init];
         id object = [protocol decodeTemplate:content];
         
-        if ([object isKindOfClass:JJModel.class])
+        if ([object conformsToProtocol:NSProtocolFromString(@"JJModelDelegate")])
         {
-            JJModel *model = (JJModel *)object;
+            id<JJModelDelegate> model = object;
             model.identityID = engine_.identityID;
             
             [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:model error:nil];

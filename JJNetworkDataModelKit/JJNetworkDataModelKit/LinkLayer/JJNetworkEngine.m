@@ -12,7 +12,7 @@
 
 @interface JJNetworkEngine ()
 
-@property (nonatomic ,strong) MKNetworkOperation *netWorkOperation;
+@property (nonatomic, strong) MKNetworkOperation *netWorkOperation;
 
 @end
 
@@ -20,15 +20,11 @@
 
 - (void)httpRequest
 {
-    [self cancelHttpRequest];
-    
-    self.netWorkOperation = [self operationWithURLString:_urlString];
-    
-    NSDictionary *body = _httpParams[JJhttpBodyKey];
+    NSMutableDictionary *body = [_httpParams[JJhttpBodyKey] mutableCopy];
     NSString *method = _httpParams[JJhttpMethodKey];
     method = method ? method : @"GET";
     
-    [self operationWithURLString:_urlString params:body httpMethod:method];
+    self.netWorkOperation = [self operationWithURLString:_urlString params:body httpMethod:method];
     
     NSAssert(_netWorkOperation, @"Network operation can not be nil");
     

@@ -12,7 +12,7 @@
 
 void jjNetworkDataModelKitTest()
 {
-    NSDictionary *dic = @{@"JJWeatherModel": @"JJWeatherOperation",};
+    NSDictionary *dic = @{@"JJWeatherModel": @"JJWeatherOperation", @"JJWeatherJSONModel": @"JJWeatherJSONModelOperation",};
     [JJApplicationLayerManager setModelAndOperationNameDictionary:dic];
     
     NSString *key = @"jjKey";
@@ -25,13 +25,28 @@ void jjNetworkDataModelKitTest()
     
     NSString *urlString = @"http://www.weather.com.cn/adat/sk/101010100.html";
     
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     [[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherProtocol") httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
     {
-        NSLog(@"object3: %@", object);
+        double executionTime = CFAbsoluteTimeGetCurrent() - startTime;
+        NSLog(@"object3: %@, time: %f", object, executionTime);
     }];
     
     [[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherProtocol") identityID:key httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
      {
          NSLog(@"object4: %@", object);
      }];
+    
+    id object8 = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel")];
+    
+    CFAbsoluteTime startTime1 = CFAbsoluteTimeGetCurrent();
+    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherJSONModelProtocol") httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
+     {
+         double executionTime = CFAbsoluteTimeGetCurrent() - startTime1;
+         NSLog(@"object5: %@, time: %f", object, executionTime);
+     }];
+    
+    id object6 = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel")];
+    
+    id object7 = [object6 copy];
 }

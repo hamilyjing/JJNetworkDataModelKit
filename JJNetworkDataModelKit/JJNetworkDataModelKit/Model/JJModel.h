@@ -9,14 +9,13 @@
 #import <Foundation/Foundation.h>
 
 #import "JJMantleHeader.h"
+#import "JJModelDelegate.h"
 
-@interface JJModel : MTLModel <MTLJSONSerializing>
+@interface JJModel : MTLModel <MTLJSONSerializing, JJModelDelegate>
 
 @property (nonatomic, copy) NSString *identityID;
 
 + (NSArray *)imagePropetyNames;
-
-+ (id)modelByContent:(NSDictionary *)content;
 
 + (NSArray *)arrayData:(Class)modelClass fromArrayContent:(NSArray *)arrayContent;
 

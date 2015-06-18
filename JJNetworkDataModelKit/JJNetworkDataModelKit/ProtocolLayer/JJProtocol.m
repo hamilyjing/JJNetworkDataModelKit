@@ -8,8 +8,6 @@
 
 #import "JJProtocol.h"
 
-#import "JJMantleHeader.h"
-
 @implementation JJProtocol
 
 - (id)decodeTemplate:(NSDictionary *)content

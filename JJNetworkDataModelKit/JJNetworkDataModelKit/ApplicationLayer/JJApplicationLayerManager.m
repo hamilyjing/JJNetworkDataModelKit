@@ -12,7 +12,7 @@
 
 #import "JJLinkLayerManager.h"
 #import "JJOperation.h"
-#import "JJModel.h"
+#import "JJModelDelegate.h"
 
 NSString *JJhttpBodyKey = @"JJhttpBodyKey";
 NSString *JJhttpMethodKey = @"JJhttpMethodKey";
@@ -145,7 +145,7 @@ static NSDictionary *s_modelToOperationDic;
         return;
     }
     
-    if (error || ![object isKindOfClass:[JJModel class]])
+    if (error || ![object conformsToProtocol:NSProtocolFromString(@"JJModelDelegate")])
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             BOOL needMemoryCache = YES;
@@ -156,7 +156,7 @@ static NSDictionary *s_modelToOperationDic;
         return;
     }
     
-    JJModel *model = (JJModel *)object;
+    id<JJModelDelegate> model = object;
     JJOperation *operation = [self getOperation:[model class]];
     
     NSInteger updateCount = 0;
@@ -198,7 +198,13 @@ static NSDictionary *s_modelToOperationDic;
     NSString *operationName = s_modelToOperationDic[modelName];
     if ([operationName length] <= 0)
     {
-        NSAssert(NO, @"Can not find operation from model %@", modelName);
+        NSRange range;
+        range.length = 5;
+        range.location = [modelName length] - range.length;
+        
+        modelName = [modelName stringByReplacingOccurrencesOfString:@"Model" withString:@"" options:NSCaseInsensitiveSearch range:range];
+        
+        operationName = [modelName stringByAppendingString:@"Operation"];
     }
     
     operation = [[NSClassFromString(operationName) alloc] init];
