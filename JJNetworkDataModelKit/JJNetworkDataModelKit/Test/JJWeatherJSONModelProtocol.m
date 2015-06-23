@@ -12,9 +12,4 @@
 
 @implementation JJWeatherJSONModelProtocol
 
-- (id)decode:(NSDictionary *)content
-{
-    return [JJWeatherJSONModel modelByContent:content[@"weatherinfo"]];
-}
-
 @end

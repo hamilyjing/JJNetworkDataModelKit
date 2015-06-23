@@ -27,6 +27,4 @@
 
 @property (nonatomic, copy) NSString<Ignore> *identityID;
 
-+ (id)modelByContent:(NSDictionary *)content;
-
 @end

@@ -76,9 +76,9 @@ static NSDictionary *s_modelToOperationDic;
     return model;
 }
 
-- (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
+- (JJIndexType)httpRequest:(NSString *)urlString_ modelOrProtocolClass:(Class)modelOrProtocolClass_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
 {
-    JJIndexType index = [self httpRequest:urlString_ protocolClass:protocolClass_ identityID:nil httpParams:httpParams_ resultBlock:resultBlock_];
+    JJIndexType index = [self httpRequest:urlString_ modelOrProtocolClass:modelOrProtocolClass_ identityID:nil httpParams:httpParams_ resultBlock:resultBlock_];
     
     return index;
 }
@@ -90,13 +90,13 @@ static NSDictionary *s_modelToOperationDic;
     [[JJLinkLayerManager sharedInstance] cancelHttpRequest:index_];
 }
 
-- (JJIndexType)httpRequest:(NSString *)urlString_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
+- (JJIndexType)httpRequest:(NSString *)urlString_ modelOrProtocolClass:(Class)modelOrProtocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
 {
     JJIndexType index = [self getIndex];
     
     [self saveRequestResult:index resultBlock:resultBlock_];
     
-    [[JJLinkLayerManager sharedInstance] httpRequest:urlString_ index:index protocolClass:protocolClass_ identityID:identityID_ httpParams:httpParams_];
+    [[JJLinkLayerManager sharedInstance] httpRequest:urlString_ index:index modelOrProtocolClass:modelOrProtocolClass_ identityID:identityID_ httpParams:httpParams_];
     
     return index;
 }
@@ -160,7 +160,10 @@ static NSDictionary *s_modelToOperationDic;
     JJOperation *operation = [self getOperation:[model class]];
     
     NSInteger updateCount = 0;
-    model = [operation operateWithNewObject:model updateCount:&updateCount];
+    if (operation)
+    {
+        model = [operation operateWithNewObject:model updateCount:&updateCount];
+    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
         BOOL needMemoryCache = YES;
@@ -202,13 +205,16 @@ static NSDictionary *s_modelToOperationDic;
         range.length = 5;
         range.location = [modelName length] - range.length;
         
-        modelName = [modelName stringByReplacingOccurrencesOfString:@"Model" withString:@"" options:NSCaseInsensitiveSearch range:range];
+        NSString *prefixName = [modelName stringByReplacingOccurrencesOfString:@"Model" withString:@"" options:NSCaseInsensitiveSearch range:range];
         
-        operationName = [modelName stringByAppendingString:@"Operation"];
+        operationName = [prefixName stringByAppendingString:@"Operation"];
     }
     
     operation = [[NSClassFromString(operationName) alloc] init];
-    _operationDic[modelName] = operation;
+    if (operation && modelName)
+    {
+        _operationDic[modelName] = operation;
+    }
     
     return operation;
 }

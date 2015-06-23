@@ -45,12 +45,12 @@
     return self;
 }
 
-- (JJIndexType)httpRequest:(NSString *)urlString_ index:(JJIndexType)index_ protocolClass:(Class)protocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_
+- (JJIndexType)httpRequest:(NSString *)urlString_ index:(JJIndexType)index_ modelOrProtocolClass:(Class)modelOrProtocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_
 {
     JJNetworkEngine *engine = [[JJNetworkEngine alloc] initWithHostName:@"www.baidu.com"];
     engine.urlString = urlString_;
     engine.index = index_;
-    engine.protocolClass = protocolClass_;
+    engine.modelOrProtocolClass = modelOrProtocolClass_;
     engine.identityID = identityID_;
     engine.httpParams = httpParams_;
     
@@ -81,8 +81,19 @@
                                                      options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
                                                        error:nil];
         
-        JJProtocol *protocol = [[engine_.protocolClass alloc] init];
-        id object = [protocol decodeTemplate:content];
+        id object;
+        NSError *error;
+        
+        Class modelOrProtocolClass = engine_.modelOrProtocolClass;
+        if ([modelOrProtocolClass conformsToProtocol:NSProtocolFromString(@"JJModelDelegate")])
+        {
+            object = [(id<JJModelDelegate>)modelOrProtocolClass modelByContent:content error:&error];
+        }
+        else
+        {
+            JJProtocol *protocol = [[engine_.modelOrProtocolClass alloc] init];
+            object = [protocol decodeTemplate:content error:&error];
+        }
         
         if ([object conformsToProtocol:NSProtocolFromString(@"JJModelDelegate")])
         {
@@ -91,9 +102,9 @@
             
             [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:model error:nil];
         }
-        else if ([object isKindOfClass:NSError.class])
+        else if (error)
         {
-            [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:nil error:object];
+            [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:nil error:error];
         }
         else
         {

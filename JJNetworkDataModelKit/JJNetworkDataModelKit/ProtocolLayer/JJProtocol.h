@@ -10,9 +10,9 @@
 
 @interface JJProtocol : NSObject
 
-- (id)decodeTemplate:(NSDictionary *)content;
+- (id)decodeTemplate:(NSDictionary *)content error:(NSError **)error;
 
 // Overwrite by son
-- (id)decode:(NSDictionary *)content;
+- (id)decode:(NSDictionary *)content error:(NSError **)error;
 
 @end

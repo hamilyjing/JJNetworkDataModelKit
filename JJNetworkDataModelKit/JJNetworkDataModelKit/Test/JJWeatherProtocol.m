@@ -12,9 +12,9 @@
 
 @implementation JJWeatherProtocol
 
-- (id)decode:(NSDictionary *)content
+- (id)decode:(NSDictionary *)content error:(NSError **)error_
 {
-    JJWeatherModel *weatherModel = [JJWeatherModel modelByContent:content];
+    JJWeatherModel *weatherModel = [JJWeatherModel modelByContent:content error:error_];
     return weatherModel;
 }
 

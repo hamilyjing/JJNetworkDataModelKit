@@ -17,6 +17,8 @@
 
 - (id)operateWithNewObject:(id)newObject updateCount:(NSInteger *)updateCount;
 
+- (id)operateWithNewObject:(id)newObject oldObject:(id)oldObject updateCount:(NSInteger *)updateCount;
+
 - (void)removeAllCache;
 - (void)removeAllMemoryCache;
 - (void)removeAllLocalCache;

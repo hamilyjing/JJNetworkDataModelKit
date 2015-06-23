@@ -10,28 +10,22 @@
 
 @implementation JJProtocol
 
-- (id)decodeTemplate:(NSDictionary *)content
+- (id)decodeTemplate:(NSDictionary *)content_ error:(NSError **)error_
 {
-    NSInteger errorNo = [content[@"errno"] integerValue];
+    NSInteger errorNo = [content_[@"errno"] integerValue];
     if (0 != errorNo)
     {
-        NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:errorNo userInfo:@{NSLocalizedDescriptionKey: content[@"error"]}];
-        return error;
+        NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:errorNo userInfo:@{NSLocalizedDescriptionKey: content_[@"error"]}];
+        *error_ = error;
+        return nil;
     }
     
-    id object = [self decode:content];
-    
-    if (!object)
-    {
-        NSString *message = [NSString stringWithFormat:@"Can not decode content: %@", content];
-        NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:101 userInfo:@{NSLocalizedDescriptionKey: message}];
-        return error;
-    }
+    id object = [self decode:content_ error:error_];
     
     return object;
 }
 
-- (id)decode:(NSDictionary *)content
+- (id)decode:(NSDictionary *)content error:(NSError **)error
 {
     return nil;
 }

@@ -12,8 +12,6 @@
 
 @property (nonatomic, copy) NSString *identityID;
 
-@optional
-
-+ (id)modelByContent:(NSDictionary *)content;
++ (id)modelByContent:(NSDictionary *)content error:(NSError **)error;
 
 @end

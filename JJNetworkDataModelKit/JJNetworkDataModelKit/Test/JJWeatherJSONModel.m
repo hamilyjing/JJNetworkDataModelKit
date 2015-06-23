@@ -10,13 +10,11 @@
 
 @implementation JJWeatherJSONModel
 
-+ (id)modelByContent:(NSDictionary *)content
++ (id)modelByContent:(NSDictionary *)content_ error:(NSError **)error_
 {
-    NSError *error;
-    JJWeatherJSONModel *model = [[JJWeatherJSONModel alloc] initWithDictionary:content error:&error];
+    JJWeatherJSONModel *model = [[JJWeatherJSONModel alloc] initWithDictionary:content_ error:error_];
     
-    id object = error ? error : model;
-    return object;
+    return model;
 }
 
 @end

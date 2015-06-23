@@ -26,21 +26,21 @@ void jjNetworkDataModelKitTest()
     NSString *urlString = @"http://www.weather.com.cn/adat/sk/101010100.html";
     
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
-    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherProtocol") httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
+    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString modelOrProtocolClass:NSClassFromString(@"JJWeatherProtocol") httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
     {
         double executionTime = CFAbsoluteTimeGetCurrent() - startTime;
         NSLog(@"object3: %@, time: %f", object, executionTime);
     }];
     
-    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherProtocol") identityID:key httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
+    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString modelOrProtocolClass:NSClassFromString(@"JJWeatherProtocol") identityID:key httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
      {
          NSLog(@"object4: %@", object);
      }];
     
-    id object8 = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel")];
+    __unused id object8 = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel")];
     
     CFAbsoluteTime startTime1 = CFAbsoluteTimeGetCurrent();
-    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherJSONModelProtocol") httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
+    [[JJApplicationLayerManager sharedInstance] httpRequest:urlString modelOrProtocolClass:NSClassFromString(@"JJWeatherJSONModel") httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
      {
          double executionTime = CFAbsoluteTimeGetCurrent() - startTime1;
          NSLog(@"object5: %@, time: %f", object, executionTime);

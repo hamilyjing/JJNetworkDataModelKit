@@ -14,7 +14,7 @@
 
 @property (nonatomic, assign) JJIndexType index;
 @property (nonatomic, copy) NSString *urlString;
-@property (nonatomic, assign) Class protocolClass;
+@property (nonatomic, assign) Class modelOrProtocolClass;
 @property (nonatomic, copy) NSString *identityID;
 @property (nonatomic, strong) NSDictionary *httpParams;
 

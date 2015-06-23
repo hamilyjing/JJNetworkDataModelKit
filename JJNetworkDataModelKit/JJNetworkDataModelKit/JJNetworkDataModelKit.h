@@ -8,7 +8,7 @@
 
 #import "JJApplicationLayerManager.h"
 #import "JJLinkLayerManager.h"
-#import "JJModel.h"
+#import "JJJSONModel.h"
 #import "JJModelDelegate.h"
 #import "JJNetworkEngine.h"
 #import "JJOperation.h"

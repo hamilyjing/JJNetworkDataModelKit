@@ -10,14 +10,9 @@
 
 @implementation JJWeatherModel
 
-+ (id)modelByContent:(NSDictionary *)content
++ (id)modelByContent:(NSDictionary *)content error:(NSError **)error_
 {
-    NSError *error;
-    JJWeatherModel *weatherModel = [MTLJSONAdapter modelOfClass:JJWeatherModel.class fromJSONDictionary:content[@"weatherinfo"] error:&error];
-    if (nil == weatherModel)
-    {
-        return error;
-    }
+    JJWeatherModel *weatherModel = [MTLJSONAdapter modelOfClass:JJWeatherModel.class fromJSONDictionary:content[@"weatherinfo"] error:error_];
     
     return weatherModel;
 }

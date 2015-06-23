@@ -8,6 +8,8 @@
 
 #import "JJOperation.h"
 
+#import "JJModelDelegate.h"
+
 static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
 @implementation JJOperation
@@ -46,10 +48,21 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
     _modelDic[key] = model_;
 }
 
-- (id)operateWithNewObject:(id)newObject updateCount:(NSInteger *)updateCount
+- (id)operateWithNewObject:(id)newObject_ updateCount:(NSInteger *)updateCount_
 {
-    *updateCount = 1;
-    return newObject;
+    id oldObject;
+    if ([newObject_ conformsToProtocol:NSProtocolFromString(@"JJModelDelegate")])
+    {
+        oldObject = [self getModelByIdentityID:((id<JJModelDelegate>)newObject_).identityID];
+    }
+    
+    return [self operateWithNewObject:newObject_ oldObject:oldObject updateCount:updateCount_];
+}
+
+- (id)operateWithNewObject:(id)newObject_ oldObject:(id)oldObject_ updateCount:(NSInteger *)updateCount_
+{
+    *updateCount_ = 1;
+    return newObject_;
 }
 
 - (void)removeAllCache

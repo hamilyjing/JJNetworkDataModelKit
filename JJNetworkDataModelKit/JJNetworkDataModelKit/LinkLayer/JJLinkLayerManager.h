@@ -17,7 +17,7 @@
 
 + (instancetype)sharedInstance;
 
-- (JJIndexType)httpRequest:(NSString *)urlString index:(JJIndexType)index protocolClass:(Class)protocolClass identityID:(NSString *)identityID httpParams:(NSDictionary *)httpParams;
+- (JJIndexType)httpRequest:(NSString *)urlString index:(JJIndexType)index modelOrProtocolClass:(Class)modelOrProtocolClass identityID:(NSString *)identityID httpParams:(NSDictionary *)httpParams;
 
 - (void)cancelHttpRequest:(JJIndexType)index;
 
