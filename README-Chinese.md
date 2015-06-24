@@ -6,9 +6,9 @@ JJNetworkDataModelKit是HTTP数据请求的通用框架，使用者只需创建�
 
 * 创建模型类
 
-创建新模型，继承JJModel类。JJNetworkDataModelKit内部使用Mantle开源库，你需要实现"JSONKeyPathsByPropertyKey"方法。
+创建模型，使用Mantle开源库，继承JJModel类；使用JSONModel开源库，继承JJJSONModel类；自定义模型，需要实现JJModelDelegate协议。
 ```objc
-@interface JJWeatherModel : JJModel
+@interface JJWeatherModel : JJJSONModel
 
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, assign) NSInteger cityid;
@@ -25,67 +25,52 @@ JJNetworkDataModelKit是HTTP数据请求的通用框架，使用者只需创建�
 
 @end
 ```
-```objc
-+ (NSDictionary *)JSONKeyPathsByPropertyKey
-{
-    return @{
-             @"city": @"city",
-             @"cityid": @"cityid",
-             @"temp": @"temp",
-             @"WD": @"WD",
-             @"WS": @"WS",
-             @"SD": @"SD",
-             @"WSE": @"WSE",
-             @"time": @"time",
-             @"isRadar": @"isRadar",
-             @"Radar": @"Radar",
-             @"njd": @"njd",
-             @"qy": @"qy",
-             };
-}
-```
 
-* 创建协议类
+* 协议类（不是必须）
 
-协议类集成JJProtocol，将HTTP应答数据解码成对应的model。
+协议类集成JJProtocol，将HTTP应答数据解码成对应的model。创建了协议类，需要实现"decode:error:"方法。
 ```objc
-- (id)decode:(NSDictionary *)content
+- (id)decode:(NSDictionary *)content error:(NSError **)error
 {
-    NSError *error;
-    JJWeatherModel *weatherModel = [MTLJSONAdapter modelOfClass:JJWeatherModel.class fromJSONDictionary:content[@"weatherinfo"] error:&error];
-    if (nil == weatherModel)
-    {
-        return error;
-    }
-    
-    return weatherModel;
+    // Convert content to model    
+    return nil;
 }
 ```
 
 * 创建操作类
 
-操作类集成JJOperation。操作类保存模型，默认archiver的格式，并且决定如何合并两次应答数据。
+操作类集成JJOperation。操作类保存模型。
+子类主要实现"operateWithNewObject:oldObject:updateCount:"，决定如何合并两次应答数据，并返回新合并后数据和更新数量。
 
-* 将新建模型和协议写在字典里
-```objc
-s_modelToOperationDic = @{@"JJWeatherModel": @"JJWeatherOperation",};
-```
+建议操作类和模型类前缀名一致，如JJWeatherJSONModel，JJWeatherJSONModelOperation，否则调用"setModelAndOperationNameDictionary:"，传递新创建的模型和操作类名称。
 
 * 使用API
 ```objc
-id object = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherModel")];
-NSLog(@"%@", object);
+// 获取模型
+id object = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel") identityID:nil];
     
+// HTTP请求
 NSString *urlString = @"http://www.weather.com.cn/adat/sk/101010100.html";
-[[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherProtocol") resultBlock:^(JJIndexType index, BOOL success, id object)
+[[JJApplicationLayerManager sharedInstance] httpRequest:urlString modelOrProtocolClass:NSClassFromString(@"JJWeatherJSONModel") identityID:nil httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
 {
-    NSLog(@"object: %@", object);
+    if (object)
+    {
+        // object is model class
+    }
+    else
+    {
+        // object is NSError class
+    }
+}
+}
 }];
 ```
 
+有时请求的URL需要传递参数，如"http://www.weather.com.cn/?country=上海"或"http://www.weather.com.cn/?country=北京"，这两个URL返回的模型是一致的，请求API中增加identityID，对应返回的模型是哪个请求发出。如果URL中没有变化参数，identityID可以传递nil。
+
 # License
 
-JJSkin is released under the MIT license. See
+JJNetworkDataModelKit is released under the MIT license. See
 [LICENSE](https://github.com/hamilyjing/JJNetworkDataModelKit/blob/master/LICENSE).
 
 # More Info

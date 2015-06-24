@@ -6,9 +6,9 @@ JJNetworkDataModelKit is HTTP data request common framework. Users only write mo
 
 * Create model class
 
-Create new model inherited JJModel for HTTP response data. We use Mantle, so you should implement "JSONKeyPathsByPropertyKey" function.
+Create new model, inherited JJModel for Mantle; inherited JJJSONModel for JSONModel; implement JJModelDelegate protocol for user-defined model.
 ```objc
-@interface JJWeatherModel : JJModel
+@interface JJWeatherModel : JJJSONModel
 
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, assign) NSInteger cityid;
@@ -25,67 +25,51 @@ Create new model inherited JJModel for HTTP response data. We use Mantle, so you
 
 @end
 ```
-```objc
-+ (NSDictionary *)JSONKeyPathsByPropertyKey
-{
-    return @{
-             @"city": @"city",
-             @"cityid": @"cityid",
-             @"temp": @"temp",
-             @"WD": @"WD",
-             @"WS": @"WS",
-             @"SD": @"SD",
-             @"WSE": @"WSE",
-             @"time": @"time",
-             @"isRadar": @"isRadar",
-             @"Radar": @"Radar",
-             @"njd": @"njd",
-             @"qy": @"qy",
-             };
-}
-```
 
-* Create protocol class
+* protocol class (not necessary)
 
 Create new protocol inherited JJProtocol to decode HTTP response data to model.
 ```objc
-- (id)decode:(NSDictionary *)content
+- (id)decode:(NSDictionary *)content error:(NSError **)error
 {
-    NSError *error;
-    JJWeatherModel *weatherModel = [MTLJSONAdapter modelOfClass:JJWeatherModel.class fromJSONDictionary:content[@"weatherinfo"] error:&error];
-    if (nil == weatherModel)
-    {
-        return error;
-    }
-    
-    return weatherModel;
+    // Convert content to model    
+    return nil;
 }
 ```
 
 * Create operation class
 
-Create new operation inherited JJOperation. The operation decided how to save the model, such as Database, archiver, and how to merger the old and new model.
+Create new operation inherited JJOperation. The operation saved model. Subclass implement "operateWithNewObject:oldObject:updateCount:" to merge twice response model, and return new model and update count.
 
-* Write dictionary info for model class name and operation class name.
-```objc
-s_modelToOperationDic = @{@"JJWeatherModel": @"JJWeatherOperation",};
-```
+Your model and operation class prefix name should be the same, such as JJWeatherJSONModel，JJWeatherJSONModelOperation.
 
 * Use API
 ```objc
-id object = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherModel")];
-NSLog(@"%@", object);
+// get model
+id object = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel") identityID:nil];
     
+// HTTP request
 NSString *urlString = @"http://www.weather.com.cn/adat/sk/101010100.html";
-[[JJApplicationLayerManager sharedInstance] httpRequest:urlString protocolClass:NSClassFromString(@"JJWeatherProtocol") resultBlock:^(JJIndexType index, BOOL success, id object)
+[[JJApplicationLayerManager sharedInstance] httpRequest:urlString modelOrProtocolClass:NSClassFromString(@"JJWeatherJSONModel") identityID:nil httpParams:nil resultBlock:^(JJIndexType index, BOOL success, id object, NSInteger updateCount, BOOL *needMemoryCache, BOOL *needLocalCache)
 {
-    NSLog(@"object: %@", object);
+    if (object)
+    {
+        // object is model class
+    }
+    else
+    {
+        // object is NSError class
+    }
+}
+}
 }];
 ```
 
+Sometimes, URL need parameters, such as, "http://www.weather.com.cn/?country=shanghai"或"http://www.weather.com.cn/?country=beijing", the two url has the same model, so, API add identityID to the model is corresponded with which url. You can set nil for identityID, if url do not variable parameter。
+
 # License
 
-JJSkin is released under the MIT license. See
+JJNetworkDataModelKit is released under the MIT license. See
 [LICENSE](https://github.com/hamilyjing/JJNetworkDataModelKit/blob/master/LICENSE).
 
 # More Info
