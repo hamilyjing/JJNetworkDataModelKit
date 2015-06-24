@@ -12,6 +12,6 @@
 
 @interface JJJSONModel : JSONModel <JJModelDelegate>
 
-@property (nonatomic, copy) NSString<Ignore> *identityID;
+@property (nonatomic, copy) NSString<Optional> *identityID;
 
 @end
