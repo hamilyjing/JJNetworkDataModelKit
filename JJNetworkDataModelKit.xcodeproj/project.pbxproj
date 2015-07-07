@@ -32,6 +32,7 @@
 		A11E21911B2C1F4D001CE732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11E21901B2C1F4D001CE732 /* Images.xcassets */; };
 		A11E21941B2C1F4D001CE732 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11E21921B2C1F4D001CE732 /* LaunchScreen.xib */; };
 		A11E21A01B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E219F1B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m */; };
+		A1A9C1131B4BB14B00A3674A /* JJCommonArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A9C1121B4BB14B00A3674A /* JJCommonArrayModel.m */; };
 		A1CE595C1B2DB90800238CB5 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59231B2DB90700238CB5 /* EXTRuntimeExtensions.m */; };
 		A1CE595D1B2DB90800238CB5 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59251B2DB90700238CB5 /* EXTScope.m */; };
 		A1CE595E1B2DB90800238CB5 /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CE59291B2DB90700238CB5 /* MTLJSONAdapter.m */; };
@@ -126,6 +127,8 @@
 		A11E21991B2C1F4D001CE732 /* JJNetworkDataModelKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJNetworkDataModelKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A11E219E1B2C1F4D001CE732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A11E219F1B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJNetworkDataModelKitTests.m; sourceTree = "<group>"; };
+		A1A9C1111B4BB14B00A3674A /* JJCommonArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCommonArrayModel.h; sourceTree = "<group>"; };
+		A1A9C1121B4BB14B00A3674A /* JJCommonArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCommonArrayModel.m; sourceTree = "<group>"; };
 		A1CE591D1B2DB90700238CB5 /* JJMantleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJMantleHeader.h; sourceTree = "<group>"; };
 		A1CE59211B2DB90700238CB5 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
 		A1CE59221B2DB90700238CB5 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 		A1CE59841B2DBD7800238CB5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A1A9C1111B4BB14B00A3674A /* JJCommonArrayModel.h */,
+				A1A9C1121B4BB14B00A3674A /* JJCommonArrayModel.m */,
 				A1CE59851B2DBD7800238CB5 /* JJModel.h */,
 				A1CE59861B2DBD7800238CB5 /* JJModel.m */,
 				7CCC41AB1B31A640006074B0 /* JJModelDelegate.h */,
@@ -705,6 +710,7 @@
 				A1CE59971B2DBD7800238CB5 /* JJApplicationLayerManager.m in Sources */,
 				A11E218C1B2C1F4D001CE732 /* ViewController.m in Sources */,
 				7CCC41D21B31B741006074B0 /* NSArray+JSONModel.m in Sources */,
+				A1A9C1131B4BB14B00A3674A /* JJCommonArrayModel.m in Sources */,
 				A11E21891B2C1F4D001CE732 /* AppDelegate.m in Sources */,
 				A11E21861B2C1F4D001CE732 /* main.m in Sources */,
 				A1CE59721B2DB90800238CB5 /* MKNetworkOperation.m in Sources */,

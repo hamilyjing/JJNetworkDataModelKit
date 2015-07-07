@@ -34,6 +34,10 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
     }
     
     model = [self getObjectFromLocalCache:key];
+    if (model)
+    {
+        _modelDic[key] = model;
+    }
     return model;
 }
 
@@ -86,8 +90,8 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
 - (void)removeCache:(NSString *)identityID_
 {
-    [self removeCache:identityID_];
     [self removeMemoryCache:identityID_];
+    [self removeLocalCache:identityID_];
 }
 
 - (void)removeMemoryCache:(NSString *)identityID_
@@ -100,6 +104,13 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
 {
     NSError *error;
     [[NSFileManager defaultManager] removeItemAtPath:[self savedFilePathIncludeIdentityID:identityID_] error:&error];
+}
+
+- (BOOL)haveLocalCache:(NSString *)identityID_
+{
+    NSString *filePath = [self savedFilePathIncludeIdentityID:identityID_];
+    BOOL fileExist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    return fileExist;
 }
 
 - (id)getObjectFromLocalCache:(NSString *)identityID_

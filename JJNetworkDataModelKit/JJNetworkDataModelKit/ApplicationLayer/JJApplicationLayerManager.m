@@ -94,6 +94,8 @@ static NSDictionary *s_modelToOperationDic;
 {
     JJIndexType index = [self getIndex];
     
+    JJDLog(@"[Application layer][Request] identityID:%@, index:%lu, urlString:%@", identityID_, index, urlString_);
+    
     [self saveRequestResult:index resultBlock:resultBlock_];
     
     [[JJLinkLayerManager sharedInstance] httpRequest:urlString_ index:index modelOrProtocolClass:modelOrProtocolClass_ identityID:identityID_ httpParams:httpParams_];

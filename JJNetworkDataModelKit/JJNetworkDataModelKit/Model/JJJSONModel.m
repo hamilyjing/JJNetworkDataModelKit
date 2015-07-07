@@ -7,6 +7,8 @@
 //
 
 #import "JJJSONModel.h"
+#import "JJCommonArrayModel.h"
+
 
 @implementation JJJSONModel
 
@@ -27,6 +29,20 @@
         if ([dataValue isKindOfClass:[NSArray class]])
         {
             object = [[self alloc] init];
+            
+            JJCommonArrayModel *arrayModel = [[JJCommonArrayModel alloc] init];
+            NSMutableArray *newArray = [[NSMutableArray alloc] init];
+            for (id dic in dataValue)
+            {
+                id obj = [[self alloc] initWithDictionary:dic error:&error];
+                if (obj) {
+                    [newArray addObject:obj];
+                } else {
+                    NSAssert(0, @"parse array error");
+                }
+            }
+            arrayModel.commonList = newArray;
+            return arrayModel;
         }
         else
         {

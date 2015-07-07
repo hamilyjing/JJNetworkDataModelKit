@@ -30,6 +30,7 @@
 // default NSKeyedArchiver and NSKeyedUnarchiver
 - (id)getObjectFromLocalCache:(NSString *)identityID;
 - (BOOL)saveObjectToLocalCache:(id)object identityID:(NSString *)identityID;
+- (BOOL)haveLocalCache:(NSString *)identityID;
 
 // file config
 - (NSString *)savedFilePathIncludeIdentityID:(NSString *)identityID;

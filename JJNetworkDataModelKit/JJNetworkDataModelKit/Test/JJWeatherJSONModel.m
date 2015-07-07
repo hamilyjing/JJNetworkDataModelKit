@@ -12,7 +12,7 @@
 
 + (id)modelByContent:(NSDictionary *)content_ error:(NSError **)error_
 {
-    JJWeatherJSONModel *model = [[JJWeatherJSONModel alloc] initWithDictionary:content_ error:error_];
+    JJWeatherJSONModel *model = [[JJWeatherJSONModel alloc] initWithDictionary:content_[@"weatherinfo"] error:error_];
     
     return model;
 }

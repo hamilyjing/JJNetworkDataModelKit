@@ -12,8 +12,7 @@
 
 void jjNetworkDataModelKitTest()
 {
-    NSDictionary *dic = @{@"JJWeatherModel": @"JJWeatherOperation", @"JJWeatherJSONModel": @"JJWeatherJSONModelOperation",};
-    [JJApplicationLayerManager setModelAndOperationNameDictionary:dic];
+    // Use Mantle
     
     NSString *key = @"jjKey";
     
@@ -37,6 +36,8 @@ void jjNetworkDataModelKitTest()
          NSLog(@"object4: %@", object);
      }];
     
+    // Use JSONModel
+    
     __unused id object8 = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel")];
     
     CFAbsoluteTime startTime1 = CFAbsoluteTimeGetCurrent();
@@ -48,5 +49,5 @@ void jjNetworkDataModelKitTest()
     
     id object6 = [[JJApplicationLayerManager sharedInstance] getModel:NSClassFromString(@"JJWeatherJSONModel")];
     
-    id object7 = [object6 copy];
+    __unused id object7 = [object6 copy];
 }

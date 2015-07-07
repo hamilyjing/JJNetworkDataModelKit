@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#ifdef DEBUG
+#define JJDLog(fmt, ...) NSLog((@"[line:%d] " fmt), __LINE__, ##__VA_ARGS__);
+#else
+#define JJDLog(...)
+#endif
+
 typedef unsigned long JJIndexType;
 
 extern NSString *JJhttpBodyKey;
@@ -21,7 +27,6 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 
 + (instancetype)sharedInstance;
 
-#warning - you should first set below function.
 + (void)setModelAndOperationNameDictionary:(NSDictionary *)dic;
 
 - (id)getModel:(Class)modelClass;

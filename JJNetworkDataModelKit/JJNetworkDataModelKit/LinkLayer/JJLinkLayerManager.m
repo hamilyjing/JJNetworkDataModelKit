@@ -84,6 +84,8 @@
         id object;
         NSError *error;
         
+        JJDLog(@"[Link layer][Response] index:%lu, content:%@", engine_.index, content);
+        
         Class modelOrProtocolClass = engine_.modelOrProtocolClass;
         if ([modelOrProtocolClass conformsToProtocol:NSProtocolFromString(@"JJModelDelegate")])
         {
