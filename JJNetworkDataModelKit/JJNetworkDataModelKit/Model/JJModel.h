@@ -14,6 +14,7 @@
 @interface JJModel : MTLModel <MTLJSONSerializing, JJModelDelegate>
 
 @property (nonatomic, copy) NSString *identityID;
+@property (nonatomic, strong) NSDictionary *httpParams;
 
 + (NSArray *)imagePropetyNames;
 

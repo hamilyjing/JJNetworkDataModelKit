@@ -103,6 +103,36 @@ static NSDictionary *s_modelToOperationDic;
     return index;
 }
 
+#pragma mark - Save model
+
+- (void)saveModel:(id)model_ identityID:(NSString *)identityID_
+{
+    [self saveModelToMemory:model_ identityID:identityID_];
+    [self saveModelToLocal:model_ identityID:identityID_ ];
+}
+
+- (void)saveModelToMemory:(id)model_ identityID:(NSString *)identityID_
+{
+    if (!model_)
+    {
+        return;
+    }
+    
+    JJOperation *operation = [self getOperation:[model_ class]];
+    [operation setModel:model_ identityID:identityID_];
+}
+
+- (void)saveModelToLocal:(id)model_ identityID:(NSString *)identityID_
+{
+    if (!model_)
+    {
+        return;
+    }
+    
+    JJOperation *operation = [self getOperation:[model_ class]];
+    [operation saveObjectToLocalCache:model_ identityID:identityID_];
+}
+
 - (void)removeAllCache:(Class)modelClass_
 {
     JJOperation *operation = [self getOperation:modelClass_];

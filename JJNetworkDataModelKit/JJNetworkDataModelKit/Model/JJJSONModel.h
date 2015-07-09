@@ -11,7 +11,11 @@
 #import "JJModelDelegate.h"
 
 @interface JJJSONModel : JSONModel <JJModelDelegate>
+{
+    NSString<Optional> *_identityID;
+}
 
 @property (nonatomic, copy) NSString<Optional> *identityID;
+@property (nonatomic, strong) NSDictionary<Optional> *httpParams;
 
 @end

@@ -101,6 +101,7 @@
         {
             id<JJModelDelegate> model = object;
             model.identityID = engine_.identityID;
+            model.httpParams = engine_.httpParams;
             
             [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:model error:nil];
         }

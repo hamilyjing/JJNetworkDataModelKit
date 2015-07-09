@@ -39,6 +39,14 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 
 - (JJIndexType)httpRequest:(NSString *)urlString modelOrProtocolClass:(Class)modelOrProtocolClass identityID:(NSString *)identityID httpParams:(NSDictionary *)httpParams resultBlock:(RequestResult)resultBlock;
 
+// Save model
+
+- (void)saveModel:(id)model identityID:(NSString *)identityID; // include memory and local
+- (void)saveModelToMemory:(id)model identityID:(NSString *)identityID;
+- (void)saveModelToLocal:(id)model identityID:(NSString *)identityID;
+
+// Remove cache
+
 - (void)removeAllCache:(Class)modelClass;
 - (void)removeAllMemoryCache:(Class)modelClass;
 - (void)removeAllLocalCache:(Class)modelClass;
@@ -46,6 +54,8 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 - (void)removeCache:(Class)modelClass identityID:(NSString *)identityID; // include memory and local cache
 - (void)removeMemoryCache:(Class)modelClass identityID:(NSString *)identityID;
 - (void)removeLocalCache:(Class)modelClass identityID:(NSString *)identityID;
+
+// Http response
 
 - (void)httpResponse:(JJIndexType)index object:(id)object error:(NSError *)error;
 

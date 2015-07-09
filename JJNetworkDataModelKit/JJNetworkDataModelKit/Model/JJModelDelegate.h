@@ -11,6 +11,7 @@
 @protocol JJModelDelegate <NSObject>
 
 @property (nonatomic, copy) NSString *identityID;
+@property (nonatomic, strong) NSDictionary *httpParams;
 
 + (id)modelByContent:(NSDictionary *)content error:(NSError **)error;
 
