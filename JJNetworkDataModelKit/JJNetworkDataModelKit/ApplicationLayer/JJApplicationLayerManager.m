@@ -13,7 +13,6 @@
 #import "JJLinkLayerManager.h"
 #import "JJOperation.h"
 #import "JJModelDelegate.h"
-#import "JJCommonArrayModel.h"
 
 NSString *JJhttpBodyKey = @"JJhttpBodyKey";
 NSString *JJhttpMethodKey = @"JJhttpMethodKey";
@@ -189,20 +188,8 @@ static NSDictionary *s_modelToOperationDic;
         return;
     }
     
-    JJOperation *operation = nil;
-    
     id<JJModelDelegate> model = object;
-    if ([model isKindOfClass:[JJCommonArrayModel class]])
-    {
-        if ([((JJCommonArrayModel *)model).commonList count] > 0)
-        {
-            operation = [self getOperation:[((JJCommonArrayModel *)model).commonList.firstObject class]];
-        }
-    }
-    else
-    {
-        operation = [self getOperation:[model class]];
-    }
+    JJOperation *operation = [self getOperation:[model class]];
     
     NSInteger updateCount = 0;
     if (operation)
