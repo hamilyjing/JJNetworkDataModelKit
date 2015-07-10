@@ -201,12 +201,7 @@ static NSDictionary *s_modelToOperationDic;
         BOOL needMemoryCache = YES;
         BOOL needLocalCache = YES;
         block(index, YES, model, updateCount, &needMemoryCache, &needLocalCache);
-        
-        if (0 == updateCount)
-        {
-            return;
-        }
-        
+                
         if (needMemoryCache)
         {
             [operation setModel:model identityID:model.identityID];
