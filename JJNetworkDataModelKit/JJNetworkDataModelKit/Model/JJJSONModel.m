@@ -28,8 +28,6 @@
         id dataValue = content_[@"data"];
         if ([dataValue isKindOfClass:[NSArray class]])
         {
-            object = [[self alloc] init];
-            
             JJCommonArrayModel *arrayModel = [[JJCommonArrayModel alloc] init];
             NSMutableArray *newArray = [[NSMutableArray alloc] init];
             for (id dic in dataValue)

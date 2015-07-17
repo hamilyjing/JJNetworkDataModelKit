@@ -23,6 +23,8 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 
 @class JJTucaoSquareModel;
 
+@protocol JJModelDelegate;
+
 @interface JJApplicationLayerManager : NSObject
 
 + (instancetype)sharedInstance;
@@ -35,9 +37,10 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 
 - (JJIndexType)httpRequest:(NSString *)urlString modelOrProtocolClass:(Class)modelOrProtocolClass httpParams:(NSDictionary *)httpParams resultBlock:(RequestResult)resultBlock;
 
-- (void)cancelHttpRequest:(JJIndexType)index;
-
 - (JJIndexType)httpRequest:(NSString *)urlString modelOrProtocolClass:(Class)modelOrProtocolClass identityID:(NSString *)identityID httpParams:(NSDictionary *)httpParams resultBlock:(RequestResult)resultBlock;
+
+- (void)cancelHttpRequest:(JJIndexType)index;
+- (void)cancelAllHttpRequest;
 
 // Save model
 
@@ -54,6 +57,12 @@ typedef void (^RequestResult)(JJIndexType index, BOOL success, id object, NSInte
 - (void)removeCache:(Class)modelClass identityID:(NSString *)identityID; // include memory and local cache
 - (void)removeMemoryCache:(Class)modelClass identityID:(NSString *)identityID;
 - (void)removeLocalCache:(Class)modelClass identityID:(NSString *)identityID;
+
+- (void)removeExpiredCache:(Class)modelClass prefixIdentityID:(NSString *)prefixIdentityID secondOfexpiredTime:(NSInteger)secondOfexpiredTime isRunOnBackground:(BOOL)isRunOnBackground;
+
+// Clean resource
+
+- (void)cleanResourceByModel:(id<JJModelDelegate>)model;
 
 // Http response
 

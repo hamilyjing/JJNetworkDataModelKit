@@ -90,6 +90,13 @@ static NSDictionary *s_modelToOperationDic;
     [[JJLinkLayerManager sharedInstance] cancelHttpRequest:index_];
 }
 
+- (void)cancelAllHttpRequest
+{
+    [self removeAllResultBlock];
+    
+    [[JJLinkLayerManager sharedInstance] cancelAllHttpRequest];
+}
+
 - (JJIndexType)httpRequest:(NSString *)urlString_ modelOrProtocolClass:(Class)modelOrProtocolClass_ identityID:(NSString *)identityID_ httpParams:(NSDictionary *)httpParams_ resultBlock:(RequestResult)resultBlock_
 {
     JJIndexType index = [self getIndex];
@@ -167,6 +174,35 @@ static NSDictionary *s_modelToOperationDic;
 {
     JJOperation *operation = [self getOperation:modelClass_];
     [operation removeLocalCache:identityID_];
+}
+
+- (void)removeExpiredCache:(Class)modelClass_ prefixIdentityID:(NSString *)prefixIdentityID_ secondOfexpiredTime:(NSInteger)secondOfexpiredTime_ isRunOnBackground:(BOOL)isRunOnBackground_
+{
+    JJOperation *operation = [self getOperation:modelClass_];
+    if (!operation)
+    {
+        operation = [[JJOperation alloc] init];
+    }
+    
+    if (isRunOnBackground_)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+        {
+            [operation removeExpiredCache:prefixIdentityID_ secondOfexpiredTime:secondOfexpiredTime_];
+        });
+    }
+    else
+    {
+        [operation removeExpiredCache:prefixIdentityID_ secondOfexpiredTime:secondOfexpiredTime_];
+    }
+}
+
+#pragma mark - Clean resource
+
+- (void)cleanResourceByModel:(id<JJModelDelegate>)model_
+{
+    JJOperation *operation = [self getOperation:[model_ class]];
+    [operation cleanResourceByModel:model_];
 }
 
 - (void)httpResponse:(JJIndexType)index object:(id)object error:(NSError *)error
@@ -279,6 +315,13 @@ static NSDictionary *s_modelToOperationDic;
     OSSpinLockUnlock(&_lock);
     
     return block;
+}
+
+- (void)removeAllResultBlock
+{
+    OSSpinLockLock(&_lock);
+    [_requestResultDic removeAllObjects];
+    OSSpinLockUnlock(&_lock);
 }
 
 - (void)removeResultBlock:(JJIndexType)index_

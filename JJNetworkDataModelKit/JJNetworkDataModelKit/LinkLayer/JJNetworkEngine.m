@@ -12,7 +12,7 @@
 
 @interface JJNetworkEngine ()
 
-@property (nonatomic, strong) MKNetworkOperation *netWorkOperation;
+//@property (nonatomic, strong) MKNetworkOperation *netWorkOperation;
 
 @end
 
@@ -24,11 +24,11 @@
     NSString *method = _httpParams[JJhttpMethodKey];
     method = method ? method : @"GET";
     
-    self.netWorkOperation = [self operationWithURLString:_urlString params:body httpMethod:method];
+    MKNetworkOperation *netWorkOperation = [self operationWithURLString:_urlString params:body httpMethod:method];
     
-    NSAssert(_netWorkOperation, @"Network operation can not be nil");
+    NSAssert(netWorkOperation, @"Network operation can not be nil");
     
-    if (!_netWorkOperation)
+    if (!netWorkOperation)
     {
         NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain code:100 userInfo:@{NSLocalizedDescriptionKey: @"Can not create network operation object!"}];
         [[JJLinkLayerManager sharedInstance] httpResponse:self completedOperation:nil error:error];
@@ -37,7 +37,7 @@
     
     __weak JJNetworkEngine *weakSelf = self;
     
-    [_netWorkOperation addCompletionHandler:^(MKNetworkOperation *completedOperation)
+    [netWorkOperation addCompletionHandler:^(MKNetworkOperation *completedOperation)
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [[JJLinkLayerManager sharedInstance] httpResponse:weakSelf completedOperation:completedOperation error:nil];
@@ -49,13 +49,13 @@
         });
     }];
     
-    [self enqueueOperation:_netWorkOperation];
+    [self enqueueOperation:netWorkOperation];
 }
 
 - (void)cancelHttpRequest
 {
-    [_netWorkOperation cancel];
-    self.netWorkOperation = nil;
+    //[_netWorkOperation cancel];
+    //self.netWorkOperation = nil;
 }
 
 @end

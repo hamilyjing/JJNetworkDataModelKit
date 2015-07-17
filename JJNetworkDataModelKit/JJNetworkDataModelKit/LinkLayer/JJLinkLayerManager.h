@@ -20,6 +20,7 @@
 - (JJIndexType)httpRequest:(NSString *)urlString index:(JJIndexType)index modelOrProtocolClass:(Class)modelOrProtocolClass identityID:(NSString *)identityID httpParams:(NSDictionary *)httpParams;
 
 - (void)cancelHttpRequest:(JJIndexType)index;
+- (void)cancelAllHttpRequest;
 
 - (void)httpResponse:(JJNetworkEngine*)engine completedOperation:(MKNetworkOperation *)completedOperation error:(NSError *)error;
 

@@ -67,6 +67,11 @@
     [engine cancelHttpRequest];
 }
 
+- (void)cancelAllHttpRequest
+{
+    [self removeAllEngine];
+}
+
 - (void)httpResponse:(JJNetworkEngine*)engine_ completedOperation:(MKNetworkOperation *)completedOperation_ error:(NSError *)error_
 {
     do {
@@ -77,9 +82,14 @@
         }
         
         NSData *data = [completedOperation_ responseData];
+        NSError *paserError;
         id content = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
-                                                       error:nil];
+                                                       error:&paserError];
+        if (nil == content)
+        {
+            JJDLog(@"Response data paser error: %@\n data:\n%@", paserError, completedOperation_.responseString);
+        }
         
         id object;
         NSError *error;
@@ -155,6 +165,13 @@
 {
     OSSpinLockLock(&_lock);
     [_engineDic removeObjectForKey:@(index_)];
+    OSSpinLockUnlock(&_lock);
+}
+
+- (void)removeAllEngine
+{
+    OSSpinLockLock(&_lock);
+    [_engineDic removeAllObjects];
     OSSpinLockUnlock(&_lock);
 }
 

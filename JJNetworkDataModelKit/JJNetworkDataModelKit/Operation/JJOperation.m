@@ -9,6 +9,7 @@
 #import "JJOperation.h"
 
 #import "JJModelDelegate.h"
+#import "NSFileManager+JJ.h"
 
 static NSString *ModelDictionaryEmptyKey = @"JJModel";
 
@@ -106,11 +107,25 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
     [[NSFileManager defaultManager] removeItemAtPath:[self savedFilePathIncludeIdentityID:identityID_] error:&error];
 }
 
+- (void)removeExpiredCache:(NSString *)prefixIdentityID secondOfexpiredTime:(NSInteger)secondOfexpiredTime
+{
+    NSString *prefixFileName = [NSString stringWithFormat:@"%@_%@", [self savedFileName:prefixIdentityID], prefixIdentityID];
+    
+    [NSFileManager jj_removeExpiredCache:prefixFileName fromDirPath:[self savedFileDirectory:prefixIdentityID] secondOfExpiredTime:secondOfexpiredTime];
+}
+
 - (BOOL)haveLocalCache:(NSString *)identityID_
 {
     NSString *filePath = [self savedFilePathIncludeIdentityID:identityID_];
     BOOL fileExist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
     return fileExist;
+}
+
+// Clean resource
+
+- (void)cleanResourceByModel:(id<JJModelDelegate>)model_
+{
+    
 }
 
 - (id)getObjectFromLocalCache:(NSString *)identityID_
@@ -125,8 +140,8 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
             break;
         }
         
-        NSString *fileName = [NSString stringWithFormat:@"%@_%@", [self savedFileName], identityID_];
-        filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:[self savedFileType]];
+        NSString *fileName = [NSString stringWithFormat:@"%@_%@", [self savedFileName:identityID_], identityID_];
+        filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:[self savedFileType:identityID_]];
         object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
         
     } while (NO);
@@ -147,21 +162,21 @@ static NSString *ModelDictionaryEmptyKey = @"JJModel";
 {
     NSString *identityID = [self getTrueIdentityID:identityID_];
     
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@_%@.%@", [self savedFileDirectory], [self savedFileName], identityID, [self savedFileType]];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@_%@.%@", [self savedFileDirectory:identityID], [self savedFileName:identityID], identityID, [self savedFileType:identityID]];
     return filePath;
 }
 
-- (NSString *)savedFileDirectory
+- (NSString * )savedFileDirectory:(NSString *)identityID
 {
     return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
-- (NSString *)savedFileName
+- (NSString *)savedFileName:(NSString *)identityID
 {
     return @"savedFileName";
 }
 
-- (NSString *)savedFileType
+- (NSString *)savedFileType:(NSString *)identityID
 {
     return @"archiver";
 }
