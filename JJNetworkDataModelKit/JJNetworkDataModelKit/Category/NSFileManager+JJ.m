@@ -2,13 +2,75 @@
 //  NSFileManager+JJ.m
 //  JJObjCTool
 //
-//  Created by gongjian03 on 7/15/15.
+//  Created by hamilyjing on 7/15/15.
 //  Copyright (c) 2015 gongjian. All rights reserved.
 //
 
 #import "NSFileManager+JJ.h"
 
 @implementation NSFileManager (JJ)
+
+#pragma mark - File exist
+
++ (BOOL)jj_isFileExistAtPath:(NSString*)fileFullPath isDirectory:(BOOL *)isDir
+{
+    BOOL isExist = NO;
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath isDirectory:isDir];
+    return isExist;
+}
+
++ (BOOL)jj_isFileExistAtPath:(NSString*)fileFullPath
+{
+    BOOL isExist = NO;
+    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath];
+    return isExist;
+}
+
+#pragma mark - File path
+
++ (NSURL *)jj_URLForDirectory:(NSSearchPathDirectory)directory
+{
+    return [self.defaultManager URLsForDirectory:directory inDomains:NSUserDomainMask].lastObject;
+}
+
++ (NSString *)jj_pathForDirectory:(NSSearchPathDirectory)directory
+{
+    return NSSearchPathForDirectoriesInDomains(directory, NSUserDomainMask, YES)[0];
+}
+
++ (NSString *)jj_documentsDirectory
+{
+    return [self jj_pathForDirectory:NSDocumentDirectory];
+}
+
++ (NSString *)jj_cachesDirectory
+{
+    return [self jj_pathForDirectory:NSCachesDirectory];
+}
+
++ (NSString *)jj_tempDirectory
+{
+    return NSTemporaryDirectory();
+}
+
++ (BOOL)jj_createDirectoryAtPath:(NSString *)path_
+{
+    if ([self jj_isFileExistAtPath:path_])
+    {
+        return YES;
+    }
+    
+    NSError *error;
+    BOOL success = [[NSFileManager defaultManager] createDirectoryAtPath:path_ withIntermediateDirectories:YES attributes:nil error:&error];
+    if (error)
+    {
+        NSAssert(@"Create directory failed, path: %@, error: %@", path_, error);
+    }
+    
+    return success;
+}
+
+#pragma mark - Get file list
 
 + (NSArray *)jj_getFileNameOrPathList:(BOOL)needFullPath_
                           fromDirPath:(NSString *)dirPath_
@@ -58,6 +120,8 @@
     return fileList;
 }
 
+#pragma mark - Get file list by file type
+
 + (NSArray *)jj_getFileListOfType:(NSString *)type_ needFullPath:(BOOL)needFullPath_ fromDirPath:(NSString *)dirPath_
 {
     return [self jj_getFileNameOrPathList:needFullPath_ fromDirPath:dirPath_ needCheckSubDirectory:NO fileNameCompareBlock:^BOOL(NSString *fileName)
@@ -77,6 +141,8 @@
     return [self jj_getFileListOfType:type_ needFullPath:YES fromDirPath:dirPath_];
 }
 
+#pragma mark - Get file list by file name
+
 + (NSArray *)jj_getFileListOfPrefixName:(NSString *)prefixName_ needFullPath:(BOOL)needFullPath_ fromDirPath:(NSString *)dirPath_
 {
     return [self jj_getFileNameOrPathList:needFullPath_ fromDirPath:dirPath_ needCheckSubDirectory:NO fileNameCompareBlock:^BOOL(NSString *fileName)
@@ -95,6 +161,8 @@
 {
     return [self jj_getFileListOfPrefixName:prefixName_ needFullPath:YES fromDirPath:dirPath_];
 }
+
+#pragma mark - Remove expired file
 
 + (void)jj_removeExpiredCache:(NSString *)prefixName_ fromDirPath:(NSString *)dirPath_ secondOfExpiredTime:(NSInteger)secondOfExpiredTime_
 {
@@ -130,20 +198,6 @@
              NSAssert(!error, @"%@", error);
          }
      }];
-}
-
-+ (BOOL)jj_isFileExistAtPath:(NSString*)fileFullPath isDirectory:(BOOL *)isDir
-{
-    BOOL isExist = NO;
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath isDirectory:isDir];
-    return isExist;
-}
-
-+ (BOOL)jj_isFileExistAtPath:(NSString*)fileFullPath
-{
-    BOOL isExist = NO;
-    isExist = [[NSFileManager defaultManager] fileExistsAtPath:fileFullPath];
-    return isExist;
 }
 
 @end
