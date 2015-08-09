@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C24C7911B77870A001991BC /* JJJSONDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C24C7901B77870A001991BC /* JJJSONDataModel.m */; };
 		7C30FFBF1B323DD30025B548 /* JJJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C30FFBE1B323DD30025B548 /* JJJSONModel.m */; };
 		7CCC41CE1B31B741006074B0 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC41B71B31B741006074B0 /* JSONModel.m */; };
 		7CCC41CF1B31B741006074B0 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC41B91B31B741006074B0 /* JSONModelArray.m */; };
@@ -79,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C24C78F1B77870A001991BC /* JJJSONDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJJSONDataModel.h; sourceTree = "<group>"; };
+		7C24C7901B77870A001991BC /* JJJSONDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJJSONDataModel.m; sourceTree = "<group>"; };
 		7C30FFBD1B323DD30025B548 /* JJJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJJSONModel.h; sourceTree = "<group>"; };
 		7C30FFBE1B323DD30025B548 /* JJJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJJSONModel.m; sourceTree = "<group>"; };
 		7CCC41AB1B31A640006074B0 /* JJModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJModelDelegate.h; sourceTree = "<group>"; };
@@ -568,11 +571,13 @@
 			children = (
 				A1A9C1111B4BB14B00A3674A /* JJCommonArrayModel.h */,
 				A1A9C1121B4BB14B00A3674A /* JJCommonArrayModel.m */,
+				7C24C78F1B77870A001991BC /* JJJSONDataModel.h */,
+				7C24C7901B77870A001991BC /* JJJSONDataModel.m */,
+				7C30FFBD1B323DD30025B548 /* JJJSONModel.h */,
+				7C30FFBE1B323DD30025B548 /* JJJSONModel.m */,
 				A1CE59851B2DBD7800238CB5 /* JJModel.h */,
 				A1CE59861B2DBD7800238CB5 /* JJModel.m */,
 				7CCC41AB1B31A640006074B0 /* JJModelDelegate.h */,
-				7C30FFBD1B323DD30025B548 /* JJJSONModel.h */,
-				7C30FFBE1B323DD30025B548 /* JJJSONModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -700,6 +705,7 @@
 				A1CE596B1B2DB90800238CB5 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
 				7CD984531B6BBA60000C5FCD /* JJNetworkDataModelKit+Test.m in Sources */,
 				A1CE595D1B2DB90800238CB5 /* EXTScope.m in Sources */,
+				7C24C7911B77870A001991BC /* JJJSONDataModel.m in Sources */,
 				A1CE59681B2DB90800238CB5 /* NSError+MTLModelException.m in Sources */,
 				A1CE596F1B2DB90800238CB5 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				7CCC41D71B31B741006074B0 /* JSONValueTransformer.m in Sources */,
