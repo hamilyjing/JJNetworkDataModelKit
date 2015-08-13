@@ -82,6 +82,13 @@
         }
         
         NSData *data = [completedOperation_ responseData];
+        if (!data)
+        {
+            NSError *dataError = [NSError errorWithDomain:NSOSStatusErrorDomain code:300 userInfo:@{NSLocalizedDescriptionKey: @"Http response data is nil."}];
+            [[JJApplicationLayerManager sharedInstance] httpResponse:engine_.index object:nil error:dataError];
+            break;
+        }
+        
         NSError *paserError;
         id content = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
