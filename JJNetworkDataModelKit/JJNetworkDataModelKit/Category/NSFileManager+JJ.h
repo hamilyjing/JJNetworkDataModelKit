@@ -21,6 +21,7 @@
 + (NSString *)jj_pathForDirectory:(NSSearchPathDirectory)directory;
 
 + (NSString *)jj_documentsDirectory;
++ (NSString *)jj_libraryDirectory;
 + (NSString *)jj_cachesDirectory;
 + (NSString *)jj_tempDirectory;
 
@@ -48,5 +49,11 @@
 + (void)jj_removeExpiredCacheWithType:(NSString *)type fromDirPath:(NSString *)dirPath secondOfExpiredTime:(NSInteger)secondOfExpiredTime;
 
 + (void)jj_removeExpiredCache:(NSArray *)filePathList secondOfExpiredTime:(NSInteger)secondOfExpiredTime;
+
+#pragma mark - File size
+
++ (NSDictionary *)jj_fileSizeDictionaryFromDirPath:(NSString *)dirPath needCheckSubDirectory:(BOOL)needCheckSubDirectory; // key: size; value: path
+
++ (void)jj_printAllFileSizeToFilePath:(NSString *)filePath fromDirPathArray:(NSArray *)fromDirPathArray;
 
 @end

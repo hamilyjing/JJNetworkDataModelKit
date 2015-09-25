@@ -34,6 +34,7 @@
 		A11E21911B2C1F4D001CE732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11E21901B2C1F4D001CE732 /* Images.xcassets */; };
 		A11E21941B2C1F4D001CE732 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11E21921B2C1F4D001CE732 /* LaunchScreen.xib */; };
 		A11E21A01B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E219F1B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m */; };
+		A182E7C41BB3E9CD004F0DDF /* NSDictionary+JJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A182E7C31BB3E9CD004F0DDF /* NSDictionary+JJ.m */; settings = {ASSET_TAGS = (); }; };
 		A1A093681B58E68700D3A3A4 /* JSONValueTransformer+JJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A093651B58E68700D3A3A4 /* JSONValueTransformer+JJ.m */; };
 		A1A093691B58E68700D3A3A4 /* NSFileManager+JJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A093671B58E68700D3A3A4 /* NSFileManager+JJ.m */; };
 		A1A9C1131B4BB14B00A3674A /* JJCommonArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A9C1121B4BB14B00A3674A /* JJCommonArrayModel.m */; };
@@ -134,6 +135,8 @@
 		A11E21991B2C1F4D001CE732 /* JJNetworkDataModelKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJNetworkDataModelKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A11E219E1B2C1F4D001CE732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A11E219F1B2C1F4D001CE732 /* JJNetworkDataModelKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJNetworkDataModelKitTests.m; sourceTree = "<group>"; };
+		A182E7C21BB3E9CD004F0DDF /* NSDictionary+JJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JJ.h"; sourceTree = "<group>"; };
+		A182E7C31BB3E9CD004F0DDF /* NSDictionary+JJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JJ.m"; sourceTree = "<group>"; };
 		A1A093641B58E68700D3A3A4 /* JSONValueTransformer+JJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONValueTransformer+JJ.h"; sourceTree = "<group>"; };
 		A1A093651B58E68700D3A3A4 /* JSONValueTransformer+JJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONValueTransformer+JJ.m"; sourceTree = "<group>"; };
 		A1A093661B58E68700D3A3A4 /* NSFileManager+JJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+JJ.h"; sourceTree = "<group>"; };
@@ -391,6 +394,8 @@
 		A1A093631B58E68700D3A3A4 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A182E7C21BB3E9CD004F0DDF /* NSDictionary+JJ.h */,
+				A182E7C31BB3E9CD004F0DDF /* NSDictionary+JJ.m */,
 				A1A093641B58E68700D3A3A4 /* JSONValueTransformer+JJ.h */,
 				A1A093651B58E68700D3A3A4 /* JSONValueTransformer+JJ.m */,
 				A1A093661B58E68700D3A3A4 /* NSFileManager+JJ.h */,
@@ -743,6 +748,7 @@
 				A1A093691B58E68700D3A3A4 /* NSFileManager+JJ.m in Sources */,
 				7CD984561B6BBA60000C5FCD /* JJWeatherJSONModelProtocol.m in Sources */,
 				A1CE596C1B2DB90800238CB5 /* NSData+MKBase64.m in Sources */,
+				A182E7C41BB3E9CD004F0DDF /* NSDictionary+JJ.m in Sources */,
 				A1CE59671B2DB90800238CB5 /* NSDictionary+MTLMappingAdditions.m in Sources */,
 				A1CE599C1B2DBD7800238CB5 /* JJProtocol.m in Sources */,
 				A1CE596A1B2DB90800238CB5 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,

@@ -8,6 +8,8 @@
 
 #import "NSFileManager+JJ.h"
 
+#import "NSDictionary+JJ.h"
+
 @implementation NSFileManager (JJ)
 
 #pragma mark - File exist
@@ -41,6 +43,11 @@
 + (NSString *)jj_documentsDirectory
 {
     return [self jj_pathForDirectory:NSDocumentDirectory];
+}
+
++ (NSString *)jj_libraryDirectory
+{
+    return [self jj_pathForDirectory:NSLibraryDirectory];
 }
 
 + (NSString *)jj_cachesDirectory
@@ -89,7 +96,12 @@
         BOOL isDir;
         BOOL fileExist = [self jj_isFileExistAtPath:fullpath isDirectory:&isDir];
         
-        if (isDir || !fileExist)
+        if (!fileExist)
+        {
+            continue;
+        }
+        
+        if (isDir && needCheckSubDirectory_)
         {
             NSArray *subFileList = [self jj_getFileNameOrPathList:needFullPath_ fromDirPath:fullpath needCheckSubDirectory:needCheckSubDirectory_ fileNameCompareBlock:fileNameCompareBlock_];
             if ([subFileList count] > 0)
@@ -198,6 +210,121 @@
              NSAssert(!error, @"%@", error);
          }
      }];
+}
+
+#pragma mark - File size
+
++ (NSDictionary *)jj_fileSizeDictionaryFromDirPath:(NSString *)dirPath_ needCheckSubDirectory:(BOOL)needCheckSubDirectory_
+{
+    NSFileManager *localFileManager = [[NSFileManager alloc] init];
+    
+    NSURL *dirURL = [NSURL fileURLWithPath:dirPath_ isDirectory:YES];
+    NSDirectoryEnumerator *dirEnumerator = [localFileManager enumeratorAtURL:dirURL
+                                                  includingPropertiesForKeys:[NSArray arrayWithObjects:NSURLPathKey, NSURLIsDirectoryKey, NSURLFileSizeKey, nil]
+                                                                     options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                                errorHandler:nil];
+    
+    NSMutableDictionary *fileSizeDic = [NSMutableDictionary dictionary];
+    
+    for (NSURL *theURL in dirEnumerator)
+    {
+        NSString *filePath = @"";
+        [theURL getResourceValue:&filePath forKey:NSURLPathKey error:NULL];
+        
+        NSNumber *isDir = nil;
+        [theURL getResourceValue:&isDir forKey:NSURLIsDirectoryKey error:NULL];
+        
+        if (isDir && ![isDir boolValue])
+        {
+            NSNumber *fileSizeNumber = nil;
+            [theURL getResourceValue:&fileSizeNumber forKey:NSURLFileSizeKey error:NULL];
+            if (fileSizeNumber)
+            {
+                id key = fileSizeNumber;
+                fileSizeDic[key] = filePath;
+            }
+        }
+        else
+        {
+            if (needCheckSubDirectory_)
+            {
+                NSDictionary *subFileSizeDic = [NSFileManager jj_fileSizeDictionaryFromDirPath:filePath needCheckSubDirectory:needCheckSubDirectory_];
+                [fileSizeDic addEntriesFromDictionary:subFileSizeDic];
+            }
+        }
+    }
+    
+    return fileSizeDic;
+}
+
++ (void)jj_printAllFileSizeToFilePath:(NSString *)filePath_
+                     fromDirPathArray:(NSArray *)fromDirPathArray_
+{
+    FILE *file = fopen([filePath_ UTF8String], "w");
+    if (NULL == file)
+    {
+        NSAssert(NO, @"Failed to open file: %@", filePath_);
+        return;
+    }
+    
+    NSDate* startDate = [NSDate date];
+    
+    NSMutableDictionary *allFileSizeDic = [NSMutableDictionary dictionary];
+    
+    [fromDirPathArray_ enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop)
+    {
+        NSDictionary *fileSizeDic = [NSFileManager jj_fileSizeDictionaryFromDirPath:obj needCheckSubDirectory:YES];
+        [allFileSizeDic addEntriesFromDictionary:fileSizeDic];
+    }];
+    
+    __block long totalSize = 0;
+    NSMutableDictionary *directorySizeDic = [NSMutableDictionary dictionary];
+    
+    NSArray *sortKeys = [allFileSizeDic jj_keyListBySortNSNumberLongKey:YES];
+    [sortKeys enumerateObjectsUsingBlock:^(NSNumber *sizeNumber, NSUInteger idx, BOOL * _Nonnull stop)
+     {
+         NSString *filePath = allFileSizeDic[sizeNumber];
+         
+         fprintf(file, "%ld\t\t%s\n", [sizeNumber longValue], [filePath UTF8String]);
+         
+         NSString *directory = [filePath stringByDeletingLastPathComponent];
+         NSNumber *directorySizeNumber = directorySizeDic[directory];
+         if (!directorySizeNumber)
+         {
+             directorySizeDic[directory] = @0;
+         }
+         
+         long fileSize = [sizeNumber longValue];
+         totalSize += fileSize;
+         
+         directorySizeDic[directory] = @([directorySizeNumber longValue] + fileSize);
+     }];
+    
+    fprintf(file, "\n\n");
+    
+    NSDictionary *directoryNewDic = [directorySizeDic jj_exchangeKeyAndValue];
+    NSArray *directorySortKeys = [directoryNewDic jj_keyListBySortNSNumberLongKey:YES];
+    [directorySortKeys enumerateObjectsUsingBlock:^(NSNumber *sizeNumber, NSUInteger idx, BOOL * _Nonnull stop)
+     {
+         NSString *filePath = directoryNewDic[sizeNumber];
+         
+         fprintf(file, "%ld\t\t%s\n", [sizeNumber longValue], [filePath UTF8String]);
+     }];
+    
+    fprintf(file, "\n\n");
+    
+    fprintf(file, "------- total size is %ld -------\n", totalSize);
+    
+    fprintf(file, "\n\n");
+    
+    NSDate *endDate = [NSDate date];
+    NSTimeInterval totalTime = [endDate timeIntervalSinceDate:startDate];
+    if (totalTime)
+    {
+        fprintf(file, "total time on listing all file size is %f\n", totalTime);
+    }
+    
+    fclose(file);
 }
 
 @end
