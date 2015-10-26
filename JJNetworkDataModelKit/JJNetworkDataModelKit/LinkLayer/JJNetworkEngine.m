@@ -39,13 +39,15 @@
     
     [netWorkOperation addCompletionHandler:^(MKNetworkOperation *completedOperation)
     {
+        JJNetworkEngine *engine = weakSelf;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[JJLinkLayerManager sharedInstance] httpResponse:weakSelf completedOperation:completedOperation error:nil];
+            [[JJLinkLayerManager sharedInstance] httpResponse:engine completedOperation:completedOperation error:nil];
         });
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error)
     {
+        JJNetworkEngine *engine = weakSelf;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [[JJLinkLayerManager sharedInstance] httpResponse:weakSelf completedOperation:nil error:error];
+            [[JJLinkLayerManager sharedInstance] httpResponse:engine completedOperation:nil error:error];
         });
     }];
     

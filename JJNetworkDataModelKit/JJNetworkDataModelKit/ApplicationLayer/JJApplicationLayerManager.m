@@ -226,6 +226,24 @@ static NSDictionary *s_modelToOperationDic;
     
     id<JJModelDelegate> model = object;
     JJOperation *operation = [self getOperation:[model class]];
+
+/*
+JJOperation *operation = nil;
+    
+    id<JJModelDelegate> model = object;
+    if ([model isKindOfClass:[JJCommonArrayModel class]])
+    {
+        if ([((JJCommonArrayModel *)model).commonList count] > 0)
+        {
+            operation = [self getOperation:[((JJCommonArrayModel *)model).commonList.firstObject class]];
+        }
+    }
+    else
+    {
+        operation = [self getOperation:[model class]];
+    }
+*/
+
     
     NSInteger updateCount = 0;
     if (operation)
